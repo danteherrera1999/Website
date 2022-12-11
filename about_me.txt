@@ -1,0 +1,23 @@
+Education
+
+Research
+
+Work Experience
+
+Skills and Proficiencies
+
+Interests and Hobbies
+
+I graduated from Texas A&M Universtiy with a B.S. in Aerospace Engineering with a minor in Astrophysics.
+
+I started research in junior year of highschool where I studied the synthesis of YBCO high temperature superconductors under Dr.Bing Lv. culminating in a presentation in from of undergrad studends and faculty.
+At TAMU I studied the characterisation and modeling of hybrid rocket engines and their combustion mechanism. I gave a presentation at Texas A&M's Student Research Week competition where I won first place for the undergraduate poster section.
+
+I began my work experience when I was 15 at a greek food restaurant and then at a burger shop. When I was a freshman in college I tutored Calculus III for the TAMU MATH department. For the next few semesters I worked as a grader for aerothermodynamics.
+I spent my 7th semester of college interning for SpaceX in Boca Chica, TX. At SpaceX I wrote software for first iteration pipe system design in python using the Fanno model. I designed and built several pipe and tube systems for orbital GSE systems, and created
+several python tools utilizing SpaceX's Stage0 API to monitor and predict pressure system state changes based on live instrumentation data. I currently work at Los Alamos National Laboratory where I continue to use python and labview to create data aquisition and controls software alongside hardware implementations.
+
+Python, LabVIEW, HTML, CSS, SolidWorks, Siemens NX, LaTeX, Office, Soldering, Wiring, Teaching, Learning, Presenting
+
+I spend most of my time learning new technical subjects or listening to/playing music. My areas of interest are modern physics, controls theory, machine learning, linear algebra. The genres I enjoy the most are vocal jazz, neo soul, and hip hop. That being said I enjoy most music and have compiled a page with some of my reccomendations.
+

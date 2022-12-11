@@ -1,0 +1,91 @@
+<body></body> body
+
+<head></head> head
+
+<title></title> title in head
+
+<div id='id'> division + tag
+
+<h1></h1> (1-6)
+
+<p></p> paragraph
+
+<span></span> inline seperate
+
+<br> line break
+
+<em></em> emphasize
+
+<strong></strong> strong text
+
+<ul> unordered list
+  <li> list item
+</ul>
+
+<ol> ordered list
+  <li> list item
+</ol>
+
+<img src="image-location.jpg" /> images
+
+<video src="myVideo.mp4" width="320" height="240" controls> VIDEOS
+  Video not supported
+</video>
+
+<section></section> sections
+
+<!DOCTYPE html> html declaration
+  <html>
+  </html>
+
+<a href="https://www.wikipedia.org/">This Is A Link To Wikipedia</a> links
+target = '_blank' new tab
+href= './other.html' local reference
+href= '#(tag)' directs to same page element with id='(tag)'
+
+<!-- this is a comment -->
+
+
+<link href='' rel='stylesheet'> link css
+
+#CSS SHIT
+p{
+  color: maroon;
+}
+
+.class{
+  color: maroon;
+}
+
+#id{
+  color: maroon;
+}
+
+[attr]{
+  color: maroon;
+}
+
+:hover, :focus, :visited, :disabled, and :active are all pseudo-classes
+
+font-family: 
+font-size: 
+color: 
+background-color: 
+line-height: 
+float: 
+padding-left: 
+text-align: 
+width: 
+opacity: 
+background-image: 
+!important override
+
+BOX MODEL
+width, height, padding, border, margin
+border: dotted/solid Xpx
+border-radius: 5px
+padding:
+padding-left/right/top/bottom
+postition: relative
+margin: 0 auto:
+top and bottom margins collapse

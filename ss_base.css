@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+.ribbon-placeholder{
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    height: 80px;
+}
+.ribbon {
+    margin-top: -80px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    width: 101%;
+    transform: translateX(-50%);
+    z-index = top;
+    text-align: center;
+    font-weight: bold;
+    background-color: black;
+}
+.ribbon-button a{
+    display: inline-block;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    font-family: 'Helvetica';
+    padding: 20px;
+    font-size: 200%;
+    -ms-transform: skewX(-20deg);
+    -webkit-transform: skewX(-20deg);
+    transform: skewX(-20deg);
+    transition: .4s;
+}
+.ribbon-button a:hover,.ribbon-button a#current-tab{
+    background-color: white;
+    color: black;
+}
+.ribbon-text{
+    -ms-transform: skewX(20deg);
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+}
+body{
+    background-color: white;
+    width: 100%;
+}
+@keyframes fadeIn{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+h1{
+    color:black;
+    font-family: "Helvetica";
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+.zq{
+    position: absolute;
+    z-index: 99;
+}
+.main{
+    animation: fadeIn 1.5s;
+    position: absolute;
+    width: 100%;
+}
