@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="projects.css" rel="stylesheet">
+        <script src='https://cdn.plot.ly/plotly-2.18.0.min.js'></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <div id="nav_section_1">
+                    <li id="home"><a href='../site.html'>Home</a></li>
+                    <li id="resume"><a href='../Herrera_Dante_Resume.pdf' target="_blank">Resume</a></li>
+                    <li id="projects"><a href='#top'>Projects</a></li>
+                </div>
+                <div id="nav_section_2">
+                    <li><a target='_blank' href='https://www.linkedin.com/in/dante-m-herrera' class='icon' id="linkedin"></a></li>
+                    <li><a target='_blank' href='https://github.com/danteherrera1999' class='icon' id="github"></a></li>
+                    <li><a target='_blank' href='mailto:dante.herrera.1999@gmail.com' class='icon' id="email"></a></li>
+                </div>
+            </ul>
+        </nav>
+        <main>
+            <ul id="projects-bar">
+                <li class="project-icon" id="rocket-icon" style="border-color: rgb(109, 25, 112);"><a href="#top"><img src="./assets/rocket-icon.png"></a></li>
+                <li class="project-icon" id="thermo-icon" ><a href="./thermo.html"><img src="./assets/thermo-icon.png"></a></li>
+                <li class="project-icon" id="gimbal-icon" ><a href="./gimbal.html"><img src="./assets/gimbal-icon.png"></a></li>
+                <li class="project-icon" id="MOC-icon" ><a href="./MOC.html"><img src="./assets/MOC-icon.png"></a></li>
+            </ul>
+            <div id="project-flex">
+                <div id="project-info">
+                    <h2>Hybrid Rocket Engine</h2>
+                    <p>
+                        I developed a small scale rocket engine to test the effect of different additives on the performance of a hydroxyl terminated polybutadiene fuel grain.
+                        The entire system was built on a budget of $50 and required many different facets of design. I did all the wiring and circuit design for valve controls and instrumentation
+                        and also coded 2 arduinos for those purposes. One arduino controlled the valve timing and flow and the other converted analog signals from instrumentation
+                        into digital signals which were transmitted over serial to a laptop running a python code for live continuous data collection. This engine also helped me
+                        characterize the hybrid engine combustion mechanism which I studied in depth as an undergraduate researcher. A presentation of my work received first place for the undergraduate engineering poster section at Texas A&M's Student Research Week competition .
+                    </p>
+                </div>
+                <div id="project-media">
+                    <video muted autoplay controls loop>
+                        <source src="./assets/gremlin.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
