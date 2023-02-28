@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="projects.css" rel="stylesheet">
+        <script src='https://cdn.plot.ly/plotly-2.18.0.min.js'></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <div id="nav_section_1">
+                    <li id="home"><a href='../index.html'>Home</a></li>
+                    <li id="resume"><a href='../Herrera_Dante_Resume.pdf' target="_blank">Resume</a></li>
+                    <li id="projects"><a href='#top'>Projects</a></li>
+                </div>
+                <div id="nav_section_2">
+                    <li><a target='_blank' href='https://www.linkedin.com/in/dante-m-herrera' class='icon' id="linkedin"></a></li>
+                    <li><a target='_blank' href='https://github.com/danteherrera1999' class='icon' id="github"></a></li>
+                    <li><a target='_blank' href='mailto:dante.herrera.1999@gmail.com' class='icon' id="email"></a></li>
+                </div>
+            </ul>
+        </nav>
+        <main>
+            <ul id="projects-bar">
+                <li class="project-icon" id="rocket-icon" ><a href="./rocket.html"><img src="./assets/rocket-icon.png"></a></li>
+                <li class="project-icon" id="thermo-icon" style="border-color: rgb(109, 25, 112);" ><a href="#top"><img src="./assets/thermo-icon.png"></a></li>
+                <li class="project-icon" id="gimbal-icon" ><a href="./gimbal.html"><img src="./assets/gimbal-icon.png"></a></li>
+                <li class="project-icon" id="MOC-icon" ><a href="./MOC.html"><img src="./assets/MOC-icon.png"></a></li>
+            </ul>
+            <div id="project-flex">
+                <div id="project-info">
+                    <h2>Fanno Flow Solver</h2>
+                    <p>
+                        <a href="https://github.com/danteherrera1999/Fanno_tool/blob/main/3d_fannoplotly.py" target="_blank">This</a> <b>interactive</b> surface plot is one element of a tool I developed while I was a fluids engineer at SpaceX. To assist with designing pipe / tube systems for the orbital launch site, I developed this tool to quickly iterate over many pipe parameters and visualize their effects on the fluid flow.
+                        When designing pipe systems it is important to consider the pressures through the pipe system, expected flow rates, mach number, and many more aspects of the system. The Fanno model of pipe flow is an
+                        adiabatic and constant duct flow model that can be solved forward rather simply. Design constraints do not always allow for the forward solution however, often times the exit conditions of the flow are constrained (exit pressure is a very common case in pipe design). This model
+                        can solve for forward flow as well as backward flow by using a recursive model with an initial guess for friction factor. This is a compressible model that uses the CoolProp python module for fluid properties and serves as the thermodynamic backbone for my modular pipe design tool which allows for
+                        rapid high level development of pipe systems.
+                    </p>
+                </div>
+                <div id="project-media">
+                    <iframe id="igraph" scrolling="no" src="./assets/fanno.html" height="120%" width="120%" style="border:none;"></iframe>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
