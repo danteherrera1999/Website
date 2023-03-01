@@ -145,6 +145,9 @@ main{
 #project-media img, video{
     max-width: 100%;
 }
+#project-media iframe{
+    max-height: 90%;
+}
 @media (max-width: 1200px){
     nav ul{
         grid-template-columns: 1fr 100px 1fr;
