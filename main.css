@@ -64,22 +64,6 @@ nav ul li{
 #email{
     background-image:url("./assets/gmail_icon.png");
 }
-@media (max-width: 650px){
-    nav ul{
-        grid-template-columns: 1fr 100px 1fr;
-        justify-self: start;
-        height: 110px;
-    }
-    #nav_section_1{
-        margin-left: 0px;
-        width: 300px;
-        grid-column: span 3;
-    }
-    #nav_section_2{
-        width: 300px;
-        grid-column: 2;
-    }
-}
 a{
     display: flex;
     text-decoration: none;
@@ -130,7 +114,7 @@ a{
     top: 620px;
     position: absolute;
     width: 100%;
-    height: 350px;
+    height: auto;
 }
 
 #line-part{
@@ -154,9 +138,11 @@ a{
 #about-text-block p{
     font-size: 1.2rem;
     color: white;
+    padding-bottom: 50px;
 }
 #circles_container{
     position: absolute;
+    overflow: hidden;
     top: 0;
     width: 100%;
     height: 1000px;
@@ -169,4 +155,32 @@ a{
     margin-top: -430px;
     z-index: -100;
     right: 0;
+}
+@media (max-width: 1200px){
+    nav ul{
+        grid-template-columns: 1fr 100px 1fr;
+        justify-self: start;
+        height: 110px;
+    }
+    #nav_section_1{
+        margin-left: 0px;
+        width: 300px;
+        grid-column: span 3;
+    }
+    #nav_section_2{
+        width: 300px;
+        grid-column: 2;
+    }
+    #headshot{
+        top: 130px;
+    }
+    #circles{
+        margin-top: -380px;
+    }
+    #circle_container{
+        top: 130px; 
+    }
+    #about-section{
+        top: 670px;
+    }
 }
