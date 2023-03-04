@@ -1,4 +1,7 @@
 const graphDiv = document.getElementById('myDiv')
+var r = graphDiv.parentElement.getBoundingClientRect();
+var xc = (r.right+r.left)/2;
+var yc = (r.top+r.bottom)/2;
 const pi = Math.PI
 const config={displayModeBar:false,displaylogo:false,"modeBarButtonsToRemove": ['pan3d',"resetCameraLastSave3d","zoom3d","resetCameraDefault3d","tableRotation","orbitRotation","toImage"]}
 const layout =  {
@@ -77,8 +80,8 @@ var vf = 180/ window.innerHeight;
 function handleMouseMove(event){
     var pos_x = event.clientX;
     var pos_y = event.clientY;
-    var theta = 90 - pos_x * hf;
-    var phi = -90 + pos_y * vf;
+    var theta = (xc-pos_x) * hf;
+    var phi = (pos_y-yc) * vf;
     sd2 = matmul(T(theta*d2r,phi*d2r),sd);
     FP = unzip(matmul(T(theta*d2r,phi*d2r),fixpoints));
     sduz = unzip(sd2);
@@ -213,6 +216,14 @@ let plate = {
     opacity:.1,
     hoverinfo:'none',
 }
+function rebox(){
+    r = graphDiv.parentElement.getBoundingClientRect();
+    xc = (r.right+r.left)/2;
+    yc = (r.top+r.bottom)/2;
+    hf = 180 / window.innerWidth;
+    vf = 180/ window.innerHeight;
+};
 Plotly.newPlot(graphDiv, [data,fp1,fp2,fp3,plate], layout,config);
-addEventListener("resize", (event)=>{hf = 180 / window.innerWidth;vf = 180/ window.innerHeight;})
+addEventListener("scroll", (event)=>{rebox()});
+addEventListener("resize", (event)=>{rebox()});
 document.onmousemove = handleMouseMove;
