@@ -76,7 +76,8 @@ const layout =  {
     };
 const d2r = Math.PI / 180;
 var hf = 180 / window.innerWidth;
-var vf = 180/ window.innerHeight;
+//var vf = 180/ window.innerHeight;
+var vf = hf;
 function handleMouseMove(event){
     var pos_x = event.clientX;
     var pos_y = event.clientY;
@@ -221,7 +222,8 @@ function rebox(){
     xc = (r.right+r.left)/2;
     yc = (r.top+r.bottom)/2;
     hf = 180 / window.innerWidth;
-    vf = 180/ window.innerHeight;
+    //vf = 180/ window.innerHeight;
+    vf = hf;
 };
 Plotly.newPlot(graphDiv, [data,fp1,fp2,fp3,plate], layout,config);
 addEventListener("scroll", (event)=>{rebox()});
