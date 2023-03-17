@@ -19,7 +19,6 @@ header{
     height: 80px;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
 }
 h1{
     color:white;
@@ -28,7 +27,6 @@ h1{
     position: absolute;
     left:0;
     top: 80px;
-    border: 1px solid green;
     height: 100px;
     display: flex;
     width: 100%;
@@ -42,7 +40,6 @@ h1{
     display: flex;
     position: absolute;
     width: 100%;
-    border: 1px solid purple;
     top: 180px;
     justify-items: center;
     justify-content: center;

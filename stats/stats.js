@@ -23,7 +23,7 @@ function onSubmit(form){
             const response = JSON.parse(XMLRequest.response);
             const stats = response.playerstats.stats;
             console.log(stats);
-            for (let i=0; i<stats.length; i++){
+            for (let i=(stats.length-1); i>=0; i--){
                 var stat = stats[i];
                 table_value(stat.name,stat.value);
             }
