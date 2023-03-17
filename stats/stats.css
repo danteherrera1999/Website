@@ -1,0 +1,60 @@
+*{
+    font-size: 100%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: .1em;
+}
+body{
+    background-color: #1f1f1f;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+header{
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+}
+h1{
+    color:white;
+}
+#steam-info{
+    position: absolute;
+    left:0;
+    top: 80px;
+    border: 1px solid green;
+    height: 100px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+#steam-info form{
+    color:white;
+}
+#stats{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    border: 1px solid purple;
+    top: 180px;
+    justify-items: center;
+    justify-content: center;
+}
+#stats table{
+    width: 75%;
+    color: white;
+}
+
+#stats table td{
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 0;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>SimpleStats</title>
+        <link rel="stylesheet" href="stats.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header><h1>Simple Stats</h1></header>
+        <div id="steam-info">
+            <form>
+                <label for="fgid">Game ID</label>
+                <input type="text" id="fgid" name="fgid">
+                <label for="fid">Steam ID</label>
+                <input type="text" id="fid" name="fid">
+                <label for="fkey">KEY</label>
+                <input type="text" id="fkey" name="fkey">
+                <input id="submit-button" type="submit" value="Get Stats" onClick="onSubmit(this.form); return false;">
+            </form>
+        </div>
+        <div id="stats">
+            <table id="stats-table">
+
+            </table>
+        </div>
+    </body>
+    <script src="stats.js"></script>
+</html>
