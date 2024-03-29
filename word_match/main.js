@@ -3009,6 +3009,7 @@ word_db=word_db={
         " vitória",
         " mapa"
     ]}//CORS strikes again
+
 class CardSet{
 	constructor(title,cards){
 		this.title = title;
@@ -3038,12 +3039,15 @@ class CardSet{
 	}
     showCards(){
         this.card_order.map((card)=>cardbox.appendChild(card))
+        setLives(this.lives)
     }
     hideCards(){
         this.card_order.map((card)=>cardbox.removeChild(card))
     }
 	minus(){
 		this.lives -= 1;
+        setLives(this.lives)
+        console.log(`${this.title} | Lives Remaining: ${this.lives}`)
 		if (this.lives == 0){this.Loss()}
 	}
 
@@ -3113,6 +3117,16 @@ class Card {
 	}
 }
 
+const empty_heart = "./assets/heart_empty.png";
+const full_heart = "./assets/heart_full.png";
+const hearts  = [...document.getElementById('heart-box').childNodes];
+console.log(hearts)
+function setLives(lives){
+    for (i=0;i<3;i++){
+        hearts[i].src = lives>i? full_heart : empty_heart;
+    }
+
+}
 
 function generate_cardset(db_range,word_distribution,src,tgt){
 	const src_db = word_db[src].slice(0,db_range);

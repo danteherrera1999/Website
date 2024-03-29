@@ -5,21 +5,36 @@ html{
 	font-family: 'Barlow', sans-serif;
 	letter-spacing: .1em;
 }
+nav{
+	margin-top: 0;
+	top: 0;
+	margin-bottom: 2em;
+	width: 100vw;
+	height: 60px;
+}
+nav h1{
+	margin: 0;
+	width: 100%;
+	font-size: 3em;
+	font-weight: 700;
+	text-align: center;
+}
 body{
 	margin: 0px;
 	padding: 0px;
 	min-height: 100vh;
-	background-color: rgb(189, 64, 64);
+	background-color: rgb(255,255,255);
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 #puzzle-select-ribbon{
-	background-color: rgb(189, 64, 64);
+	background-color: rgb(255,255,255);
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
+	align-items: center;
 	padding : 0;
 	height: 50px;
 	width: 500px;
@@ -27,17 +42,19 @@ body{
 	justify-content: space-around;
 }
 #puzzle-select-ribbon button{
+	cursor:pointer;
 	height:2em;
 	width:5em;
+	text-align: center;
+	vertical-align: center;
+	border: 1pt solid black;
 	border-radius: .5em;
-	border-style: solid;
 }
 #puzzle-select-ribbon .active{
 	background-color: rgb(100,255,100);
-	border-color: rgb(100,255,100);
 }
 #cardbox{
-	background-color: rgb(189, 64, 64);
+	background-color: rgb(255,255,255);
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -49,7 +66,9 @@ body{
 	grid-template-rows: repeat(6,1fr);
 }
 .card{
-	border-radius: 5px;
+	border: 1px solid black;
+	cursor:pointer;
+	border-radius: 1em;
 	margin: 1.4%;
 	display: flex;
 	background-color: white;
@@ -63,4 +82,15 @@ body{
 	border-style: 'dashed';
 	border-color: black;
 	border-width: 1;
+}
+#heart-box{
+	background-color: rgb(255,255,255);
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding : 0;
+	height: 50px;
+	width: 300px;
+	display: flex;
+	justify-content: center;
 }
