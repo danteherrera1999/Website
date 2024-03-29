@@ -94,3 +94,7 @@ body{
 	display: flex;
 	justify-content: center;
 }
+#heart-box img{
+	height: 50px;
+	width: 50px;
+}
