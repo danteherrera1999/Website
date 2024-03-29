@@ -3014,8 +3014,9 @@ class CardSet{
 		this.title = title;
 		this.cards = cards.map((pair)=>new Card(pair,this));
 		this.allSolved = false;
-		this.placeCards(this.cards.map((card)=>card.card));
+		//this.placeCards(this.cards.map((card)=>card.card));
 		this.lives = 3;
+        this.card_order = this.generateCardOrder(this.cards);
 	}
 
 	checkSolved(){
@@ -3023,16 +3024,24 @@ class CardSet{
 		console.log(`All Cards Solved: ${this.allSolved}`);
 	}
 
-	placeCards(cards){
-		var front_cards = cards.map((card)=>card['front']);
-		var back_cards = cards.map((card)=>card['back']);
+	generateCardOrder(cards){
+		var front_cards = cards.map((card)=>card.card['front']);
+		var back_cards = cards.map((card)=>card.card['back']);
+        var card_order = []
 		while (front_cards.length>0){
-			cardbox.appendChild(front_cards.shift());
+			card_order.push(front_cards.shift());
 			const i = Math.floor(Math.random() * back_cards.length);
-			cardbox.appendChild(back_cards.splice(i,1)[0]);
+			card_order.push(back_cards.splice(i,1)[0]);
 		}
+        console.log(card_order);
+        return card_order;
 	}
-
+    showCards(){
+        this.card_order.map((card)=>cardbox.appendChild(card))
+    }
+    hideCards(){
+        this.card_order.map((card)=>cardbox.removeChild(card))
+    }
 	minus(){
 		this.lives -= 1;
 		if (this.lives == 0){this.Loss()}
@@ -3123,10 +3132,31 @@ function generate_cardset(db_range,word_distribution,src,tgt){
 
 	return new CardSet("easy",indices.map((ind)=>[src_db[ind],tgt_db[ind]]));
 }
-easy_cardset = generate_cardset(100,[4,2,0],'en','pt',6);
+
+daily_cardsets = {
+    "Easy":generate_cardset(750,[4,2,0],'en','pt',6),
+    "Medium":generate_cardset(750,[2,3,1],'en','pt',6),
+    "Hard":generate_cardset(750,[0,3,3],'en','pt',6),
+}
 
 
+daily_puzzle_ribbon = document.getElementById('puzzle-select-ribbon')
 
-
+Object.keys(daily_cardsets).forEach((key)=>{
+    const new_button = document.createElement("button");
+    new_button.innerHTML=key;
+    new_button.id = key;
+    new_button.addEventListener('click',(event)=>{
+        previous = [...event.target.parentElement.childNodes].filter((child)=>[...child.classList].includes("active"))[0];
+        console.log(previous)
+        previous.classList.remove("active");
+        daily_cardsets[previous.id].hideCards();
+        event.target.classList.add('active');
+        daily_cardsets[event.target.id].showCards();
+    })
+    daily_puzzle_ribbon.appendChild(new_button);
+})
+daily_cardsets["Easy"].showCards();
+daily_puzzle_ribbon.children[0].classList.add("active")
 
 

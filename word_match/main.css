@@ -11,8 +11,30 @@ body{
 	min-height: 100vh;
 	background-color: rgb(189, 64, 64);
 	display:flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+#puzzle-select-ribbon{
+	background-color: rgb(189, 64, 64);
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding : 0;
+	height: 50px;
+	width: 500px;
+	display: flex;
+	justify-content: space-around;
+}
+#puzzle-select-ribbon button{
+	height:2em;
+	width:5em;
+	border-radius: .5em;
+	border-style: solid;
+}
+#puzzle-select-ribbon .active{
+	background-color: rgb(100,255,100);
+	border-color: rgb(100,255,100);
 }
 #cardbox{
 	background-color: rgb(189, 64, 64);
