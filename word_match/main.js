@@ -11238,8 +11238,8 @@ function eliminateCards(){
 }
 
 function cycleCardset(){
-    Object.values(daily_cardsets).forEach((cardset)=>cardset.destroy())
     eliminateCards()
+    Object.values(daily_cardsets).forEach((cardset)=>cardset.destroy())
     daily_cardsets = {
     "Easy":generate_cardset(1000,[4,2,0],src_lg,tgt_lg,6,"Easy"),
     "Medium":generate_cardset(1000,[2,3,1],src_lg,tgt_lg,6,"Medium"),
