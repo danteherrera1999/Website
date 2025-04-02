@@ -1,0 +1,881 @@
+{
+	"Orbital": {
+		"Starport": {
+			"Coriolis": {
+				"data": {
+					"T2": -3,
+					"T3": 1,
+					"Security": -2,
+					"Tech Level": 1,
+					"Wealth": 2,
+					"Standard of Living": 3,
+					"Development Level": 2,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			},
+			"Asteroid Base": {
+				"data": {
+					"T2": -3,
+					"T3": 1,
+					"Security": -1,
+					"Tech Level": 3,
+					"Wealth": 5,
+					"Standard of Living": -4,
+					"Development Level": 7,
+					"Facility Economy": "Extraction",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			},
+			"Ocellus": {
+				"data": {
+					"T2": 0,
+					"T3": -6,
+					"Security": -3,
+					"Tech Level": 6,
+					"Wealth": 7,
+					"Standard of Living": 5,
+					"Development Level": 8,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 5,
+					"Max Population Increase": 1
+				}
+			},
+			"Orbis": {
+				"data": {
+					"T2": 0,
+					"T3": -6,
+					"Security": -3,
+					"Tech Level": 6,
+					"Wealth": 7,
+					"Standard of Living": 5,
+					"Development Level": 8,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 5,
+					"Max Population Increase": 1
+				}
+			}
+		},
+		"Outpost": {
+			"Commercial": {
+				"alias":"Commercial Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -1,
+					"Tech Level": 0,
+					"Wealth": 2,
+					"Standard of Living": 5,
+					"Development Level": 0,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Industrial": {
+				"alias":"Industrial Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 0,
+					"Tech Level": 3,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 2,
+					"Facility Economy": "Industrial",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Criminal": {
+				"alias":"Criminal Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -2,
+					"Tech Level": 0,
+					"Wealth": 2,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "Colony",
+					"Economy Influence": "Contraband",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Civilian": {
+				"alias":"Civilian Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -1,
+					"Tech Level": 0,
+					"Wealth": 1,
+					"Standard of Living": 1,
+					"Development Level": 1,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Scientific": {
+				"alias":"Scientific Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 0,
+					"Tech Level": 3,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "Hightech",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			},
+			"Military": {
+				"alias":"Military Outpost",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 2,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "Military",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			}
+		},
+		"Installation": {
+			"Satellite": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 0,
+					"Tech Level": 0,
+					"Wealth": 1,
+					"Standard of Living": 1,
+					"Development Level": 1,
+					"Facility Economy": "",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Comm Station": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 1,
+					"Tech Level": 3,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Space Farm": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 0,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 5,
+					"Development Level": 1,
+					"Facility Economy": "",
+					"Economy Influence": "Agricultural",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Pirate Base": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -4,
+					"Tech Level": 0,
+					"Wealth": 3,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Contraband",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Mining Outpost": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 0,
+					"Tech Level": 0,
+					"Wealth": 3,
+					"Standard of Living": -2,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Extraction",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Relay Station": {
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": 1,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 1,
+					"Facility Economy": "",
+					"Economy Influence": "Hightech",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Military": {
+				"alias":"Military Installation",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 6,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Military",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Security Station": {
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 8,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 3,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Military",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Government": {
+				"alias":"Government Installation",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 2,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 6,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Medical": {
+				"alias":"Medical Installation",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 0,
+					"Tech Level": 3,
+					"Wealth": 0,
+					"Standard of Living": 5,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Hightech",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Research Station": {
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 0,
+					"Tech Level": 8,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Hightech",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Tourist": {
+				"alias":"Tourist Installation",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -3,
+					"Tech Level": 0,
+					"Wealth": 6,
+					"Standard of Living": 0,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Tourism",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Space Bar": {
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -2,
+					"Tech Level": 0,
+					"Wealth": 2,
+					"Standard of Living": 3,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Tourism",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			}
+		}
+	},
+	"Surface": {
+		"Planetary Port": {
+			"Outpost Civilian": {
+				"alias":"Civilian Port",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -2,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 3,
+					"Development Level": 0,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 2,
+					"Max Population Increase": 0
+				}
+			},
+			"Outpost Industrial": {
+				"alias":"Industrial Port",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -1,
+					"Tech Level": 0,
+					"Wealth": 2,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "Industrial",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			},
+			"Outpost Scientific": {
+				"alias":"Scientific Port",
+				"data": {
+					"T2": 1,
+					"T3": 0,
+					"Security": -1,
+					"Tech Level": 5,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 1,
+					"Facility Economy": "Hightech",
+					"Economy Influence": "",
+					"Initial Population Increase": 1,
+					"Max Population Increase": 0
+				}
+			},
+			"Port": {
+				"alias":"Planetary Port",
+				"data": {
+					"T2": 0,
+					"T3": -6,
+					"Security": -3,
+					"Tech Level": 5,
+					"Wealth": 5,
+					"Standard of Living": 6,
+					"Development Level": 10,
+					"Facility Economy": "Colony",
+					"Economy Influence": "",
+					"Initial Population Increase": 10,
+					"Max Population Increase": 10
+				}
+			}
+		},
+		"Settlement": {
+			"Agriculture": {
+				"Small": {
+					"alias":"Agriculture Settlement (S)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 3,
+						"Development Level": 0,
+						"Facility Economy": "Agricultural",
+						"Economy Influence": "Agricultural",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Agriculture Settlement (M)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 6,
+						"Development Level": 0,
+						"Facility Economy": "Agricultural",
+						"Economy Influence": "Agricultural",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Agriculture Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 10,
+						"Development Level": 0,
+						"Facility Economy": "Agricultural",
+						"Economy Influence": "Agricultural",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			},
+			"Extraction": {
+				"Small": {
+					"alias":"Extraction Settlement (S)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 2,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Extraction",
+						"Economy Influence": "Extraction",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Extraction Settlement (M)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 5,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Extraction",
+						"Economy Influence": "Extraction",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Extraction Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": 0,
+						"Tech Level": 1,
+						"Wealth": 7,
+						"Standard of Living": -2,
+						"Development Level": 0,
+						"Facility Economy": "Extraction",
+						"Economy Influence": "Extraction",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			},
+			"Industrial": {
+				"Small": {
+					"alias":"Industrial Settlement (S)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 2,
+						"Facility Economy": "Industrial",
+						"Economy Influence": "Industrial",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Industrial Settlement (M)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 5,
+						"Facility Economy": "Industrial",
+						"Economy Influence": "Industrial",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Industrial Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": 0,
+						"Tech Level": 0,
+						"Wealth": 2,
+						"Standard of Living": 0,
+						"Development Level": 8,
+						"Facility Economy": "Industrial",
+						"Economy Influence": "Industrial",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			},
+			"Military": {
+				"Small": {
+					"alias":"Military Settlement (S)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 2,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Military",
+						"Economy Influence": "Military",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Military Settlement (M)",
+					"data": {
+						"T2": 1,
+						"T3": 0,
+						"Security": 4,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Military",
+						"Economy Influence": "Military",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Military Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": 6,
+						"Tech Level": 0,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 2,
+						"Facility Economy": "Military",
+						"Economy Influence": "Military",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			},
+			"Research": {
+				"Small": {
+					"alias":"Research Settlement (S)",
+					"data": {
+						"T2": -1,
+						"T3": 1,
+						"Security": 0,
+						"Tech Level": 3,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 1,
+						"Facility Economy": "Hightech",
+						"Economy Influence": "Hightech",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Research Settlement (M)",
+					"data": {
+						"T2": -1,
+						"T3": 1,
+						"Security": 0,
+						"Tech Level": 6,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 1,
+						"Facility Economy": "Hightech",
+						"Economy Influence": "Hightech",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Research Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": 0,
+						"Tech Level": 10,
+						"Wealth": 0,
+						"Standard of Living": 0,
+						"Development Level": 2,
+						"Facility Economy": "Hightech",
+						"Economy Influence": "Hightech",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			},
+			"Tourism": {
+				"Small": {
+					"alias":"Tourism Settlement (S)",
+					"data": {
+						"T2": -1,
+						"T3": 1,
+						"Security": -1,
+						"Tech Level": 0,
+						"Wealth": 1,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Tourism",
+						"Economy Influence": "Tourism",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Medium": {
+					"alias":"Tourism Settlement (M)",
+					"data": {
+						"T2": -1,
+						"T3": 1,
+						"Security": -1,
+						"Tech Level": 0,
+						"Wealth": 2,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Tourism",
+						"Economy Influence": "Tourism",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				},
+				"Large": {
+					"alias":"Tourism Settlement (L)",
+					"data": {
+						"T2": -1,
+						"T3": 2,
+						"Security": -1,
+						"Tech Level": 0,
+						"Wealth": 5,
+						"Standard of Living": 0,
+						"Development Level": 0,
+						"Facility Economy": "Tourism",
+						"Economy Influence": "Tourism",
+						"Initial Population Increase": 0,
+						"Max Population Increase": 0
+					}
+				}
+			}
+		},
+		"Hub": {
+			"Extraction": {
+				"alias":"Extraction Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 0,
+					"Tech Level": 0,
+					"Wealth": 10,
+					"Standard of Living": -4,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Extraction",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Civilian": {
+				"alias":"Civilian Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -3,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 3,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Exploration": {
+				"alias":"Exploration Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -1,
+					"Tech Level": 6,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Tourism",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Outpost": {
+				"alias":"Outpost Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -2,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 3,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Scientific": {
+				"alias":"Scientific Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 0,
+					"Tech Level": 10,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Hightech",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Military": {
+				"alias":"Military Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 10,
+					"Tech Level": 0,
+					"Wealth": 0,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Military",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Refinery": {
+				"alias":"Refinery Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -1,
+					"Tech Level": 3,
+					"Wealth": 5,
+					"Standard of Living": -2,
+					"Development Level": 7,
+					"Facility Economy": "",
+					"Economy Influence": "Refinery",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"High Tech": {
+				"alias":"High Tech Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": -2,
+					"Tech Level": 10,
+					"Wealth": -2,
+					"Standard of Living": 0,
+					"Development Level": 0,
+					"Facility Economy": "",
+					"Economy Influence": "Hightech",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			},
+			"Industrial": {
+				"alias":"Industrial Hub",
+				"data": {
+					"T2": -1,
+					"T3": 1,
+					"Security": 0,
+					"Tech Level": 3,
+					"Wealth": 5,
+					"Standard of Living": -4,
+					"Development Level": 2,
+					"Facility Economy": "",
+					"Economy Influence": "Industrial",
+					"Initial Population Increase": 0,
+					"Max Population Increase": 0
+				}
+			}
+		}
+	}
+}
