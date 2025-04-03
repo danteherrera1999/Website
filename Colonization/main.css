@@ -10,7 +10,7 @@ body{
 	z-index: 2;
 	margin: 0px;
 	padding: 0px;
-	height: 100vh;
+	height: 200vh;
 	min-width: 500px;
 	width:100vw;
 	position: relative;
@@ -81,7 +81,6 @@ ul{
 .structure-dfield > div> p{
 	color:black;
 	border: none;
-	color: #c06400 ;
 	/* border-right: 5px dotted #c06400; */
 }
 #dfield-header{
