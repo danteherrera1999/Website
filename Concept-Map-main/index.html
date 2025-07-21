@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <link href="https://fonts.cdnfonts.com/css/eurostile" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <title> Node </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height,user-scalable=no">
+</head>
+
+<body>
+    <menu id="rcMenu">
+        <ul>New Node</ul>
+        <ul>Delete Element</ul>
+        <ul>Highlight Node and Connections</ul>
+        <ul>Delete Selected Nodes</ul>
+        <ul>Find Node
+            <menu id="selectableNodes">
+            </menu>
+        </ul>
+    </menu>
+    <div id="ruleMenu">
+        <div id="ruleMenuTitleDiv"><h1>Edit Style Rules</h1></div>
+        <div id="menuRuleList"></div>
+        <div id="ruleEditInput">
+            <input id="ruleTitleInput" type="text"/>
+            <select id="ruleStyleTypeInput">
+                <option value="backgroundColor">Background Color</option>
+                <option value="border">Border Color</option>
+            </select>
+            <input id="ruleStyleInput" type="color"/>
+            <select id="ruleTypeInput">
+                <option value="preconnect">Children</option>
+                <option value="tag">Tag</option>
+            </select>
+            <input id="ruleTargetInput" list="ruleTargetOptions" type="text"/>
+        </div>
+        <button id="saveRuleButton">Save</button>
+        <button id="newRuleButton">New Rule</button>
+        <button id="deleteRuleButton">Delete</button>
+        <datalist id="ruleTargetOptions"></datalist>
+        <div id="exampleDisplay"></div>
+        <div id="affectedNodesList"></div>
+    </div>
+    <input id="mapNameInput" placeholder="Map Name"/>
+    <menu id="sideMenu">
+        <a id="importButton"><input id="fileInput" type="file" />
+            <h1>Import</h1>
+        </a>
+        <a id="exportButton">
+            <h1>Export</h1>
+        </a>
+        <a id="deleteAllButton">
+            <h1>Clear</h1>
+        </a>
+        <a id="gridSnapButton">
+            <h1>No Snap</h1>
+        </a>
+        <div id="ruleList">
+            <a>Style Rules</a>
+        </div>
+    </menu>
+    <div id="selectionBox"></div>
+    <div id="nodeMenu">
+        <div id="nodeInputMenu">
+            <div>
+                <h2>Node</h2>
+                <h2 id="idInputField">PH</h2>
+            </div>
+            <div>
+                <h2>Name</h2>
+                <div class="layeredInput" id="nameInputField">
+                    <textarea class="nodeInputField" type="text"></textarea>
+                    <p></p>
+                </div>
+            </div>
+            <div>
+                <h2>Description</h2>
+                <div class="layeredInput" id="descriptionInputField">
+                    <textarea class="nodeInputField" type="text"></textarea>
+                    <p></p>
+                </div>
+            </div>
+            <div>
+                <h2>Tags</h2>
+                <div id="tagsInputField">
+                    <input class="nodeInputField" list="tagOptions"/>
+                    <datalist id="tagOptions"></datalist>
+                    <div id="tagBox"></div>
+                </div>
+            </div>
+            <div>
+                <h2>Connected Nodes</h2>
+                <div id="connectionsInputField"></div>
+            </div>
+            <div class="sizeControl" id="nodeInputResizeBox"></div>
+        </div>
+    </div>
+    <div id="nodeBox">
+        <svg id="edgeBox"></svg>
+        <div id="gridElement"></div>
+    </div>
+    <script src="./main.js" type="text/javascript"></script>
+</body>
+
+</html>
