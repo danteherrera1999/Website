@@ -19,19 +19,12 @@ add style rule ordering*
 */
 
 // final pixel position = (absolute position + pan ) * scalefactor 
-async function load_template(filename){
-  fetch('./Examples/'+filename).then(response=>response.json()).then((data)=>{
-    nodeBox.loadAllData(JSON.stringify(data));
-  })
-}
-
-
 
 const svgNS = "http://www.w3.org/2000/svg";
 const defaultLineWidth = 5;
 const defaultGridSize = 60.0;
 const defaultNodeSize = 60;
-const defaultNodeBackgroundColor = '#b49bb0ff';
+const defaultNodeBackgroundColor = '#78aba7ff';
 const defaultNodeBorder = 'none';
 const emptyConfig = JSON.stringify({
   'allNodeData': [],
@@ -236,6 +229,9 @@ class Node {
   handleClick = e => {
     if (e.button === 0) {
       this.openNodeMenu = true;
+      if (nodeInputMenu.element.style.display=='block'){
+        nodeInputMenu.handleSubmit();
+      }
       if (this.element.classList.contains("selectedNode")) {
         nodeBox.panOriginX = e.clientX;
         nodeBox.panOriginY = e.clientY;
@@ -359,7 +355,7 @@ class NodeBox {
   handleClick = e => {
     if (e.button === 0) {
       if (nodeInputMenu.element.style.display == "block") {
-        nodeInputMenu.element.style.display = "none";
+        nodeInputMenu.handleSubmit();
       }
       this.panOrigin = [e.clientX, e.clientY];
       document.addEventListener("mousemove", this.handleLeftDrag);
@@ -558,6 +554,11 @@ class NodeBox {
     this.setPan(this.pan, true);
     ruleMenu.updateRuleElements();
   }
+  async load_template(filename){
+  fetch('./Examples/'+filename).then(response=>response.json()).then((data)=>{
+    this.loadAllData(JSON.stringify(data));
+  })
+}
   refreshStyleRules() {
     this.nodes.forEach((node) => {
       node.element.style.backgroundColor = defaultNodeBackgroundColor;
@@ -863,7 +864,7 @@ class InputMenu {
       e.stopPropagation();
       e.preventDefault();
       document.addEventListener("mousemove", this.handleResize);
-      document.addEventListener("mouseup", () => { document.removeEventListener("mousemove", this.handleResize) })
+      document.addEventListener("mouseup", () => { document.removeEventListener("mousemove", this.handleResize) },{once:true})
     })
   }
   handleSubmit = e => {
@@ -1003,18 +1004,13 @@ document.getElementById("fileInput").addEventListener("change", nodeBox.loadFrom
 document.getElementById("exportButton").addEventListener("click", nodeBox.exportNodeData);
 document.getElementById("deleteAllButton").addEventListener("click", () => { nodeBox.loadAllData(emptyConfig) });
 document.getElementById("gridSnapButton").addEventListener("click", (e) => { e.target.children[0].innerHTML = (nodeBox.snapNodes ? "No Snap" : "Snap"); nodeBox.snapNodes = !nodeBox.snapNodes })
-document.getElementById("loadExampleButton").addEventListener("click",(e)=>{load_template(e.target.value)})
+document.getElementById("loadExampleButton").addEventListener("click",(e)=>{nodeBox.load_template(e.target.value)})
 
 document.addEventListener("click", (e) => { rcMenu.close() })
 nodeBox.element.addEventListener("click", () => { if (ruleMenu.element.style.display == 'block') { ruleMenu.closeMenu() } })
-document.addEventListener("keypress", (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    if (nodeInputMenu.element.style.display == 'block') { nodeInputMenu.handleSubmit() }
-  }
-})
 document.addEventListener("keydown", (e) => {
   if (e.key === 'Escape') {
-    if (nodeInputMenu.element.style.display == 'block') { nodeInputMenu.element.style.display = 'none' };
+    if (nodeInputMenu.element.style.display == 'block') { nodeInputMenu.handleSubmit()};
     if (nodeBox.selectedNodes.length > 0) { nodeBox.clearSelectedNodes() };
     if (ruleMenu.element.style.display == 'block') { ruleMenu.closeMenu() };
   }

@@ -50,7 +50,7 @@
 .node{
     position:absolute;
     /* background-color: #341f1f; */
-    background-color: #b1a0a0;
+    background-color: #341f1f;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -82,7 +82,11 @@
     border: 1px dashed black;
     width: min(15%,10px);
     height: min(15%,10px);
+    display: none;
     left:0;
+}
+.node:hover > .nodeEbox{
+    display: block;
 }
 .sizeControl{
     position: absolute;
@@ -164,11 +168,22 @@
     height: 100%;
 }
 #nodeInputMenu > div{
-    height:18%;
     width:100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
 } 
+#idInputField-container{
+    height:2rem;   
+}
+#nodeInputField-container{
+    height:2rem;
+}
+#descriptionInputField-container{
+    height:60%;
+}
+#descriptionInputField-container > div{
+    overflow-y: scroll;
+}
 #tagsInputField > input{
     width: 100%;
     height: 20%;
