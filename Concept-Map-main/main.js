@@ -1040,3 +1040,4 @@ if (localStorage.getItem('sessionData') != null) {
 }
 // document.addEventListener("mousedown",(e)=>{e.preventDefault()})
 // document.addEventListener("click",(e)=>{console.log(e.target)})
+document.getElementById("loadExampleButton").click()
