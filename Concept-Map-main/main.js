@@ -1038,6 +1038,8 @@ if (document.addEventListener) {
 if (localStorage.getItem('sessionData') != null) {
   nodeBox.loadAllData(localStorage.getItem('sessionData'));
 }
+else{
+  nodeBox.load_template('Proofs.json')
+}
 // document.addEventListener("mousedown",(e)=>{e.preventDefault()})
 // document.addEventListener("click",(e)=>{console.log(e.target)})
-document.getElementById("loadExampleButton").click()
