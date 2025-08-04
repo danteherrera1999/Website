@@ -65,14 +65,14 @@
 }
 
 .nodeName{
-    margin: 0;
-    width: fit-content;
-    height: fit-content;
     color: black;
     font-family: eurostile;
+    width: 100%;
     text-align: center;
-    margin: auto;
+    display: flex;
+    justify-content: center;
 }
+
 
 .nodeEbox{
     position: absolute;

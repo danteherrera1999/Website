@@ -320,7 +320,7 @@ class Node {
   setScale(sf) {
     this.element.style.width = `${this.nodeData.width * sf}px`;
     this.element.style.height = `${this.nodeData.height * sf}px`;
-    this.nameDisplay.style.fontSize = `${12 * sf}px`;
+    this.nameDisplay.style.fontSize = `${11 * sf}px`;
     if (this.nameDisplay.children.length > 0) {
       this.nameDisplay.innerHTML = this.nodeData.name == '' ? `Node ${this.nodeData.id}` : this.nodeData.name; //I dont know why but this is required or mathjax will not update scale
       MathJax.typeset([this.nameDisplay]);
