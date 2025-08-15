@@ -384,7 +384,7 @@ class NodeBox {
     this.mapNameInput = document.getElementById("mapNameInput")
     this.snapNodes = true;
     this.rules = [];
-    document.addEventListener("wheel", this.handleZoom)
+    this.element.addEventListener("wheel", this.handleZoom)
     document.addEventListener("mouseup", () => { this.originEbox = null })
   }
   handleClick = e => {
@@ -948,8 +948,7 @@ class InputMenu {
     displayLayer.style.display = 'none';
     inputLayer.focus();
     inputLayer.addEventListener("focusout", () => {
-      this.setLayeredInputValue(element, inputLayer.value), { once: true }
-    })
+      this.setLayeredInputValue(element, inputLayer.value)}, { once: true });
   }
   setLayeredInputValue(element, value) {
     const inputLayer = element.children[0];
