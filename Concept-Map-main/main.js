@@ -111,7 +111,7 @@ class rightClickMenu {
       newOption.innerHTML = node.nodeData.name;
       this.nodeListSelect.appendChild(newOption);
     })
-    MathJax.typeset(this.nodeListSelect.children)
+    MathJax.typesetPromise(this.nodeListSelect.children)
     this.nodeListSelect.style.display = 'flex';
   }
   openAddTags = e => {
@@ -323,7 +323,7 @@ class Node {
     this.nameDisplay.style.fontSize = `${11 * sf}px`;
     if (this.nameDisplay.children.length > 0) {
       this.nameDisplay.innerHTML = this.nodeData.name == '' ? `Node ${this.nodeData.id}` : this.nodeData.name; //I dont know why but this is required or mathjax will not update scale
-      MathJax.typeset([this.nameDisplay]);
+      MathJax.typesetPromise([this.nameDisplay]);
     }
   }
   handleEboxClick(e, eBoxType) {
@@ -359,7 +359,7 @@ class Node {
         this.nodeData[key] = nodeData[key];
       }
       this.nameDisplay.innerHTML = nodeData.name == '' ? `Node ${nodeData.id}` : nodeData.name;
-      MathJax.typeset([this.nameDisplay]);
+      MathJax.typesetPromise([this.nameDisplay]);
     }
   }
   removeConnection(nid) {
@@ -954,8 +954,8 @@ class InputMenu {
     const inputLayer = element.children[0];
     const displayLayer = element.children[1];
     inputLayer.value = value;
-    displayLayer.innerHTML = value;
-    MathJax.typeset([displayLayer])
+    displayLayer.innerHTML = value.replaceAll("\n","$ \\newline $");
+    MathJax.typesetPromise([displayLayer])
     inputLayer.style.display = 'none';
     displayLayer.style.display = 'block';
   }
@@ -1083,11 +1083,18 @@ if (document.addEventListener) {
   }, false);
 }
 
-if (localStorage.getItem('sessionData') != null) {
-  nodeBox.loadAllData(localStorage.getItem('sessionData'));
+function initPage(){
+  if (localStorage.getItem('sessionData') != null) {
+    nodeBox.loadAllData(localStorage.getItem('sessionData'));
+  }
+  else {
+    nodeBox.load_template('Proofs.json')
+  }
 }
-else {
-  nodeBox.load_template('Proofs.json')
-}
+
 // document.addEventListener("mousedown",(e)=>{e.preventDefault()})
 // document.addEventListener("click",(e)=>{console.log(e.target)})
+
+MathJax.startup.promise.then(() => {
+  initPage()
+});

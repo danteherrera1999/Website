@@ -5,14 +5,20 @@
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
+                inlineMath: [['$', '$']]
             },
             svg: {
                 fontCache: 'global'
+            },
+            linebreaks: {
+                inline: true, // Allows browser-based breaking of in-line equations
+                width: '100%', // Sets the width for line breaking (can be a fixed size or percentage)
+                lineleading: .2, // Adjusts the spacing between lines
+                // LinebreakVisitor: null, // Advanced option for custom line breaking
             }
         };
     </script>
-    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js">
     </script>
     <link href="https://fonts.cdnfonts.com/css/eurostile" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
