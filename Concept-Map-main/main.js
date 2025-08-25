@@ -706,6 +706,26 @@ class NodeBox {
         break;
     }
   }
+  pasteNodes(e){
+    const copiedNodeData = JSON.parse(localStorage.getItem("copiedNodes")).map((node)=>node.nodeData);
+    let newNodes = copiedNodeData.map(()=>nodeBox.addNode(e,0,0));
+    for (let i=0;i<newNodes.length;i++){
+      let newNodeData = copiedNodeData[i];
+      //override new node id to avoid overlap
+      copiedNodeData.forEach((nodeData)=>{
+        nodeData.connections
+      })
+      newNodeData.id = newNodes[i].id;
+      newNodeData.connections=[];
+      // Check if name is taken (pasting to same map) and reset name if so
+      if (nodeBox.nodes.map((node)=>node.nodeData.name).includes(newNodeData.name)){
+        newNodeData.name='';
+      }
+      newNodes[i].setNodeData(newNodeData);
+    }
+    nodeBox.refreshAllNodes();
+    console.log(nodeBox.nodes)
+  }
 }
 
 class RuleMenu {
@@ -1070,6 +1090,17 @@ document.addEventListener("keydown", (e) => {
     else if (e.key == 's') {
       nodeBox.saveNodeData()
       e.preventDefault()
+    }
+    else if (e.key=='c'){
+      if (nodeBox.selectedNodes.length >0){
+        localStorage.setItem("copiedNodes",JSON.stringify(nodeBox.selectedNodes))
+      }
+    }
+    else if (e.key=='v'){
+      if (localStorage.getItem("copiedNodes") != null){
+        console.log("Copying Nodes");
+        nodeBox.pasteNodes(e);
+      }
     }
   }
   else if (e.key == 'Delete') {
