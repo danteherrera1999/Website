@@ -708,14 +708,20 @@ class NodeBox {
   }
   pasteNodes(e){
     const copiedNodeData = JSON.parse(localStorage.getItem("copiedNodes")).map((node)=>node.nodeData);
+    let nodeShift = [copiedNodeData[0].x,copiedNodeData[0].y];
+    copiedNodeData.slice(1).forEach((nodeData)=>{
+      if (nodeData.x <= nodeShift[0] && nodeData.y <= nodeShift[1]){
+        console.log('hi')
+        nodeShift = [nodeData.x,nodeData.y];
+      }
+    })
     let newNodes = copiedNodeData.map(()=>nodeBox.addNode(e,0,0));
     for (let i=0;i<newNodes.length;i++){
       let newNodeData = copiedNodeData[i];
       //override new node id to avoid overlap
-      copiedNodeData.forEach((nodeData)=>{
-        nodeData.connections
-      })
       newNodeData.id = newNodes[i].id;
+      newNodeData.x = copiedNodeData[i].x+lastMousePos[0]/nodeBox.scaleFactor-nodeShift[0]-nodeBox.pan[0];
+      newNodeData.y = copiedNodeData[i].y+lastMousePos[1]/nodeBox.scaleFactor-nodeShift[1]-nodeBox.pan[1];
       newNodeData.connections=[];
       // Check if name is taken (pasting to same map) and reset name if so
       if (nodeBox.nodes.map((node)=>node.nodeData.name).includes(newNodeData.name)){
@@ -724,7 +730,6 @@ class NodeBox {
       newNodes[i].setNodeData(newNodeData);
     }
     nodeBox.refreshAllNodes();
-    console.log(nodeBox.nodes)
   }
 }
 
@@ -1073,7 +1078,10 @@ document.getElementById("exportButton").addEventListener("click", nodeBox.export
 document.getElementById("deleteAllButton").addEventListener("click", () => { nodeBox.loadAllData(emptyConfig) });
 document.getElementById("gridSnapButton").addEventListener("click", (e) => { e.target.children[0].innerHTML = (nodeBox.snapNodes ? "No Snap" : "Snap"); nodeBox.snapNodes = !nodeBox.snapNodes })
 document.getElementById("loadExampleButton").addEventListener("click", (e) => { nodeBox.load_template(e.target.value) })
-
+let lastMousePos = [0,0];
+nodeBox.element.addEventListener("mousemove",(e)=>{
+  lastMousePos = [e.clientX,e.clientY];
+})
 document.addEventListener("click", (e) => { rcMenu.close() })
 nodeBox.element.addEventListener("click", () => { if (ruleMenu.element.style.display == 'block') { ruleMenu.closeMenu() } })
 document.addEventListener("keydown", (e) => {
@@ -1093,6 +1101,7 @@ document.addEventListener("keydown", (e) => {
     }
     else if (e.key=='c'){
       if (nodeBox.selectedNodes.length >0){
+        console.log(nodeBox.selectedNodes)
         localStorage.setItem("copiedNodes",JSON.stringify(nodeBox.selectedNodes))
       }
     }
