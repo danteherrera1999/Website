@@ -47,12 +47,12 @@ class rightClickMenu {
     this.targetNodeId = 0;
     this.onNodeOnly = ["deleteNode", "highlightNode"];
     this.rcButtons = {
-      'newNode':document.getElementById("newNodeRCButton"),
-      'deleteNode':document.getElementById("deleteNodeRCButton"),
-      'highlightNode':document.getElementById("highlightNodeRCButton"),
-      'deleteSelected':document.getElementById("deleteSelectedRCButton"),
-      'findNode':document.getElementById("findNodeRCButton"),
-      'addTags':document.getElementById("addTagRCButton")
+      'newNode': document.getElementById("newNodeRCButton"),
+      'deleteNode': document.getElementById("deleteNodeRCButton"),
+      'highlightNode': document.getElementById("highlightNodeRCButton"),
+      'deleteSelected': document.getElementById("deleteSelectedRCButton"),
+      'findNode': document.getElementById("findNodeRCButton"),
+      'addTags': document.getElementById("addTagRCButton")
     }
     this.rcButtons['newNode'].addEventListener("click", (e) => { nodeBox.addNode(e, this.x / nodeBox.scaleFactor - nodeBox.pan[0], this.y / nodeBox.scaleFactor - nodeBox.pan[1]) });
     this.rcButtons['deleteNode'].addEventListener("click", () => { nodeBox.removeNodeById(this.targetNodeId) })
@@ -60,15 +60,15 @@ class rightClickMenu {
     this.rcButtons['deleteSelected'].addEventListener("click", () => { nodeBox.deleteSelectedNodes(); this.close() })
     this.rcButtons['findNode'].addEventListener("click", this.handleFindNodeClick)
     this.rcButtons['addTags'].addEventListener("click", this.handleAddTagsClick)
-    
+
     this.nodeListSelect = document.getElementById("selectableNodes");
     this.nodeListSelect.style.display = 'none';
     this.addTagsSelect = document.getElementById("selectableTags");
     this.addTagsSelect.style.display = 'none';
-    
+
   }
   setControlVisibility(target = null) {
-    Object.entries(this.rcButtons).forEach(([key,element]) =>{
+    Object.entries(this.rcButtons).forEach(([key, element]) => {
       element.style.display = ((target == 'node' && this.onNodeOnly.includes(key)) || (target != 'node' && !this.onNodeOnly.includes(key))) ? 'block' : 'none';
     })
     this.rcButtons['deleteSelected'].style.display = (nodeBox.selectedNodes.length > 0) ? 'block' : 'none';
@@ -461,9 +461,9 @@ class NodeBox {
       this.setPan([0, 1].map((x) => this.pan[x] + clickCoords[x] * ((1 / this.scaleFactor) - (1 / oldSF))), true)
     }
   }
-  addTagToSelected(tagText){
-    this.selectedNodes.forEach((node)=>{
-      if (!node.nodeData.tags.includes(tagText)){
+  addTagToSelected(tagText) {
+    this.selectedNodes.forEach((node) => {
+      if (!node.nodeData.tags.includes(tagText)) {
         let newNodeData = node.nodeData;
         newNodeData.tags.push(tagText);
         node.setNodeData(newNodeData);
@@ -706,30 +706,42 @@ class NodeBox {
         break;
     }
   }
-  pasteNodes(e){
-    const copiedNodeData = JSON.parse(localStorage.getItem("copiedNodes")).map((node)=>node.nodeData);
-    let nodeShift = [copiedNodeData[0].x,copiedNodeData[0].y];
-    copiedNodeData.slice(1).forEach((nodeData)=>{
-      if (nodeData.x <= nodeShift[0] && nodeData.y <= nodeShift[1]){
-        console.log('hi')
-        nodeShift = [nodeData.x,nodeData.y];
+  pasteNodes(e) {
+    const copiedNodeData = JSON.parse(localStorage.getItem("copiedNodeData")).sort();
+    let nodeIdMapping = Object.fromEntries(copiedNodeData.map((nodeData) => [nodeData.id, 0]));
+    let nodeShift = [copiedNodeData[0].x, copiedNodeData[0].y];
+    copiedNodeData.slice(1).forEach((nodeData) => {
+      if (nodeData.x <= nodeShift[0] && nodeData.y <= nodeShift[1]) {
+        nodeShift = [nodeData.x, nodeData.y];
       }
     })
-    let newNodes = copiedNodeData.map(()=>nodeBox.addNode(e,0,0));
-    for (let i=0;i<newNodes.length;i++){
-      let newNodeData = copiedNodeData[i];
+    let newNodes = copiedNodeData.map(() => nodeBox.addNode(e, 0, 0));
+    for (let i = 0; i < newNodes.length; i++) {
       //override new node id to avoid overlap
-      newNodeData.id = newNodes[i].id;
-      newNodeData.x = copiedNodeData[i].x+lastMousePos[0]/nodeBox.scaleFactor-nodeShift[0]-nodeBox.pan[0];
-      newNodeData.y = copiedNodeData[i].y+lastMousePos[1]/nodeBox.scaleFactor-nodeShift[1]-nodeBox.pan[1];
-      newNodeData.connections=[];
+      copiedNodeData[i].id = newNodes[i].id;
+      nodeIdMapping[Object.keys(nodeIdMapping)[i]] = newNodes[i].id;
+      copiedNodeData[i].x = copiedNodeData[i].x + lastMousePos[0] / nodeBox.scaleFactor - nodeShift[0] - nodeBox.pan[0];
+      copiedNodeData[i].y = copiedNodeData[i].y + lastMousePos[1] / nodeBox.scaleFactor - nodeShift[1] - nodeBox.pan[1];
       // Check if name is taken (pasting to same map) and reset name if so
-      if (nodeBox.nodes.map((node)=>node.nodeData.name).includes(newNodeData.name)){
-        newNodeData.name='';
+      if (nodeBox.nodes.map((node) => node.nodeData.name).includes(copiedNodeData[i].name)) {
+        copiedNodeData[i].name = '';
       }
-      newNodes[i].setNodeData(newNodeData);
+    }
+    //Handle Connections
+    for (let i = 0; i < copiedNodeData.length; i++) {
+      copiedNodeData[i].connections = copiedNodeData[i].connections.filter((connectionId) => Object.keys(nodeIdMapping).includes(connectionId.toString()));
+      copiedNodeData[i].connections = copiedNodeData[i].connections.map((connectionId) => nodeIdMapping[connectionId]);
+      copiedNodeData[i].connections.forEach((connectionId) => {
+        nodeBox.addEdge(connectionId, newNodes[i].id);
+      })
+    }
+    //Set all Node Data
+    for (let i = 0; i < copiedNodeData.length; i++) {
+      newNodes[i].setNodeData(copiedNodeData[i]);
     }
     nodeBox.refreshAllNodes();
+    nodeBox.refreshAllEdges();
+    nodeBox.refreshStyleRules();
   }
 }
 
@@ -973,13 +985,14 @@ class InputMenu {
     displayLayer.style.display = 'none';
     inputLayer.focus();
     inputLayer.addEventListener("focusout", () => {
-      this.setLayeredInputValue(element, inputLayer.value)}, { once: true });
+      this.setLayeredInputValue(element, inputLayer.value)
+    }, { once: true });
   }
   setLayeredInputValue(element, value) {
     const inputLayer = element.children[0];
     const displayLayer = element.children[1];
     inputLayer.value = value;
-    displayLayer.innerHTML = value.replaceAll("\n","$ \\newline $");
+    displayLayer.innerHTML = value.replaceAll("\n", "$ \\newline $");
     MathJax.typesetPromise([displayLayer])
     inputLayer.style.display = 'none';
     displayLayer.style.display = 'block';
@@ -1078,9 +1091,9 @@ document.getElementById("exportButton").addEventListener("click", nodeBox.export
 document.getElementById("deleteAllButton").addEventListener("click", () => { nodeBox.loadAllData(emptyConfig) });
 document.getElementById("gridSnapButton").addEventListener("click", (e) => { e.target.children[0].innerHTML = (nodeBox.snapNodes ? "No Snap" : "Snap"); nodeBox.snapNodes = !nodeBox.snapNodes })
 document.getElementById("loadExampleButton").addEventListener("click", (e) => { nodeBox.load_template(e.target.value) })
-let lastMousePos = [0,0];
-nodeBox.element.addEventListener("mousemove",(e)=>{
-  lastMousePos = [e.clientX,e.clientY];
+let lastMousePos = [0, 0];
+nodeBox.element.addEventListener("mousemove", (e) => {
+  lastMousePos = [e.clientX, e.clientY];
 })
 document.addEventListener("click", (e) => { rcMenu.close() })
 nodeBox.element.addEventListener("click", () => { if (ruleMenu.element.style.display == 'block') { ruleMenu.closeMenu() } })
@@ -1099,15 +1112,14 @@ document.addEventListener("keydown", (e) => {
       nodeBox.saveNodeData()
       e.preventDefault()
     }
-    else if (e.key=='c'){
-      if (nodeBox.selectedNodes.length >0){
-        console.log(nodeBox.selectedNodes)
-        localStorage.setItem("copiedNodes",JSON.stringify(nodeBox.selectedNodes))
+    else if (e.key == 'c') {
+      if (nodeBox.selectedNodes.length > 0) {
+        const nodeDataToCopy = JSON.stringify(nodeBox.selectedNodes.map((node) => node.nodeData).sort((a, b) => a.id - b.id));
+        localStorage.setItem("copiedNodeData", nodeDataToCopy)
       }
     }
-    else if (e.key=='v'){
-      if (localStorage.getItem("copiedNodes") != null){
-        console.log("Copying Nodes");
+    else if (e.key == 'v') {
+      if (localStorage.getItem("copiedNodeData") != null) {
         nodeBox.pasteNodes(e);
       }
     }
@@ -1123,7 +1135,7 @@ if (document.addEventListener) {
   }, false);
 }
 
-function initPage(){
+function initPage() {
   if (localStorage.getItem('sessionData') != null) {
     nodeBox.loadAllData(localStorage.getItem('sessionData'));
   }
