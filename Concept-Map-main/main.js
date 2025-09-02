@@ -485,7 +485,7 @@ class NodeBox {
     this.refreshAllEdges();
   }
   removeNodeById(id) {
-    if (nodeInputMenu.fields.id.innerHTML != id) {
+    if (!(nodeInputMenu.fields.id.innerHTML == id && nodeInputMenu.element.style.display=='block')) {
       this.rules = this.rules.filter((rule) => rule.ruleType != 'preconnect' || rule.target != id)
       this.removeEdgesById(id);
       this.nodes.forEach((node) => { if (node.id == id) { node.element.remove() } });
@@ -1151,4 +1151,5 @@ function initPage() {
 
 MathJax.startup.promise.then(() => {
   initPage()
+
 });
