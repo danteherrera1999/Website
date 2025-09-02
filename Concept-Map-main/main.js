@@ -485,12 +485,14 @@ class NodeBox {
     this.refreshAllEdges();
   }
   removeNodeById(id) {
-    this.rules = this.rules.filter((rule) => rule.ruleType != 'preconnect' || rule.target != id)
-    this.removeEdgesById(id);
-    this.nodes.forEach((node) => { if (node.id == id) { node.element.remove() } });
-    this.nodes = this.nodes.filter((node) => node.id != id);
-    this.refreshStyleRules();
-    ruleMenu.updateRuleElements();
+    if (nodeInputMenu.fields.id.innerHTML != id) {
+      this.rules = this.rules.filter((rule) => rule.ruleType != 'preconnect' || rule.target != id)
+      this.removeEdgesById(id);
+      this.nodes.forEach((node) => { if (node.id == id) { node.element.remove() } });
+      this.nodes = this.nodes.filter((node) => node.id != id);
+      this.refreshStyleRules();
+      ruleMenu.updateRuleElements();
+    }
   }
   addNode(e, x, y, id = null) {
     var newNodeId = id;
