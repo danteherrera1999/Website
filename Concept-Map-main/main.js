@@ -485,7 +485,7 @@ class NodeBox {
     this.refreshAllEdges();
   }
   removeNodeById(id) {
-    if (!(nodeInputMenu.fields.id.innerHTML == id && nodeInputMenu.element.style.display=='block')) {
+    if (nodeInputMenu.fields.id.innerHTML != id) {
       this.rules = this.rules.filter((rule) => rule.ruleType != 'preconnect' || rule.target != id)
       this.removeEdgesById(id);
       this.nodes.forEach((node) => { if (node.id == id) { node.element.remove() } });
@@ -1120,7 +1120,7 @@ document.addEventListener("keydown", (e) => {
         localStorage.setItem("copiedNodeData", nodeDataToCopy)
       }
     }
-    else if (e.key == 'v') {
+    else if (e.key == 'v' && nodeInputMenu.element.style.display!='block') {
       if (localStorage.getItem("copiedNodeData") != null) {
         nodeBox.pasteNodes(e);
       }
@@ -1151,5 +1151,4 @@ function initPage() {
 
 MathJax.startup.promise.then(() => {
   initPage()
-
 });
