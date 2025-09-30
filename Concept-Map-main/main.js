@@ -1,6 +1,8 @@
 /*
 Features to implement:
 
+Completely rework markup system to incorporate python scripts/ graphics
+
 style page*
 add input box resizing*
 "find node" option in rcm*
@@ -1027,9 +1029,9 @@ class InputMenu {
     if (this.fields['id'].innerHTML!=nodeData['id']){
       this.element.style.width = '30vw';
       this.element.style.height = '30vw';
+      this.left = (nodeData.x + nodeBox.pan[0]) * nodeBox.scaleFactor + 50;
+      this.top = (nodeData.y + nodeBox.pan[1]) * nodeBox.scaleFactor - 250;
     }
-    this.left = (nodeData.x + nodeBox.pan[0]) * nodeBox.scaleFactor + 50;
-    this.top = (nodeData.y + nodeBox.pan[1]) * nodeBox.scaleFactor - 250;
     this.element.style.left = `${Math.min(Math.max(0, this.left), window.innerWidth - this.width)}px`;
     this.element.style.top = `${Math.min(Math.max(0, this.top), window.innerHeight - this.height)}px`;
     [...this.tagBox.children].forEach((tag) => tag.remove());
