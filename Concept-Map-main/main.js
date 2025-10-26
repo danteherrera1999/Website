@@ -23,7 +23,7 @@ Add tag to all selected*
 */
 
 // final pixel position = (absolute position + pan ) * scalefactor 
-const examplesFolder = "https://api.github.com/repos/danteherrera1999/Website/contents/Concept-Map-main/Examples";
+
 const svgNS = "http://www.w3.org/2000/svg";
 const defaultLineWidth = 5;
 const defaultGridSize = 60.0;
@@ -1089,7 +1089,6 @@ const nodeBox = new NodeBox();
 const rcMenu = new rightClickMenu(document.getElementById("rcMenu"));
 const nodeInputMenu = new InputMenu(document.getElementById("nodeMenu"));
 const ruleMenu = new RuleMenu();
-const loadExampleButton = document.getElementById("loadExampleButton");
 
 //Add button functionality
 document.getElementById("importButton").addEventListener("click", () => { document.getElementById("fileInput").click() })
@@ -1097,16 +1096,7 @@ document.getElementById("fileInput").addEventListener("change", nodeBox.loadFrom
 document.getElementById("exportButton").addEventListener("click", nodeBox.exportNodeData);
 document.getElementById("deleteAllButton").addEventListener("click", () => { nodeBox.loadAllData(emptyConfig) });
 document.getElementById("gridSnapButton").addEventListener("click", (e) => { e.target.children[0].innerHTML = (nodeBox.snapNodes ? "No Snap" : "Snap"); nodeBox.snapNodes = !nodeBox.snapNodes })
-// Load all templates
-fetch(examplesFolder).then(response=>response.json()).then((examples)=>{
-  examples.forEach(example=>{
-    const newOption = document.createElement("option");
-    newOption.value = example.name;
-    newOption.innerHTML = example.name.substring(0,example.name.length-5);
-    loadExampleButton.appendChild(newOption);
-  })
-});
-loadExampleButton.addEventListener("click", (e) => { nodeBox.load_template(e.target.value) })
+document.getElementById("loadExampleButton").addEventListener("click", (e) => { nodeBox.load_template(e.target.value) })
 let lastMousePos = [0, 0];
 nodeBox.element.addEventListener("mousemove", (e) => {
   lastMousePos = [e.clientX, e.clientY];
@@ -1152,11 +1142,13 @@ if (document.addEventListener) {
 }
 
 function initPage() {
-  if (localStorage.getItem('sessionData') != null) {
-    nodeBox.loadAllData(localStorage.getItem('sessionData'));
+  const params = new URLSearchParams(window.location.search);
+  const init_sheet = params.get("sheet");
+  if (init_sheet){
+    nodeBox.load_template(`${init_sheet}.json`);
   }
-  else {
-    nodeBox.load_template('Proofs.json')
+  else if (localStorage.getItem('sessionData') != null) {
+    nodeBox.loadAllData(localStorage.getItem('sessionData'));
   }
 }
 
