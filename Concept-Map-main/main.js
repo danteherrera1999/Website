@@ -1146,6 +1146,7 @@ function initPage() {
   const init_sheet = params.get("sheet");
   if (init_sheet){
     nodeBox.load_template(`${init_sheet}.json`);
+    history.replaceState({},'','?sheet=');
   }
   else if (localStorage.getItem('sessionData') != null) {
     nodeBox.loadAllData(localStorage.getItem('sessionData'));
