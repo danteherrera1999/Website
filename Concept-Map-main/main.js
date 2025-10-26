@@ -588,6 +588,7 @@ class NodeBox {
   }
   loadAllData(sessionData) {
     const newSessionData = JSON.parse(sessionData);
+    console.log(newSessionData);
     this.scaleFactor = newSessionData.settings.scaleFactor;
     this.pan = newSessionData.settings.pan;
     this.mapNameInput.value = newSessionData.settings.mapName;
@@ -610,8 +611,8 @@ class NodeBox {
     ruleMenu.updateRuleElements();
   }
   async load_template(filename) {
-    fetch(examplesFolder +'/'+ filename).then(response => response.json()).then((data) => {
-      this.loadAllData(JSON.stringify(data));
+    fetch(examplesFolder+'/'+ filename).then(response => response.json()).then((data) => {
+      this.loadAllData(atob(data.content));
     })
   }
   refreshStyleRules() {
