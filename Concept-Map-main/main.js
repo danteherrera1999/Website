@@ -610,7 +610,7 @@ class NodeBox {
     ruleMenu.updateRuleElements();
   }
   async load_template(filename) {
-    fetch('./Examples/' + filename).then(response => response.json()).then((data) => {
+    fetch('https://danteherrera.com/Concept-Map-main/Examples/' + filename).then(response => response.json()).then((data) => {
       this.loadAllData(JSON.stringify(data));
     })
   }
