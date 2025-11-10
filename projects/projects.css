@@ -63,6 +63,9 @@ nav ul li{
 #email{
     background-image:url("../assets/gmail_icon.png");
 }
+.hidden{
+    display: none;
+}
 nav a{
     display: flex;
     text-decoration: none;
@@ -78,6 +81,36 @@ main{
     margin: 0;
     position: absolute;
     top: 70px;
+}
+#project-categories-ribbon{
+    display:flex;
+    padding: 0;
+    height: 70px;
+    width: 100%;
+    top:0;
+    margin:0;
+    justify-content: center;
+    list-style-type: none;
+}
+.project-category{
+    margin:auto 0;
+}
+.project-category button{
+    background-color: transparent;
+    width: 140px;
+    height: 70px;
+    margin: 0;
+    color: white;
+    border: none;
+    object-fit: contain;
+    transform: skew(-15deg);
+}
+.project-category button:hover{
+    background-color: #6d6d6d;
+}
+
+.selected-project{
+    border-color: rgb(109, 25, 112) !important;
 }
 #projects-bar{
     display:flex;
@@ -111,6 +144,9 @@ main{
     height: 800px;
     margin-top: 20px;
     justify-content: space-around;
+}
+.vertical-project{
+    flex-direction: column !important;
 }
 #project-info{
     display: flex;

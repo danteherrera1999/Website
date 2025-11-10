@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.cdnfonts.com/css/eurostile" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+    <title> {PH} </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height,user-scalable=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.min.js"></script>
+</head>
+
+<body>
+    <div id="graph"></div>
+    <button id="simulate-button">Simulate</button>
+    <label for="kinetic-energy-input">Kinetic Energy (200 eV - 2000 eV)</label>
+    <input type="number" id="kinetic-energy-input" name="Kinetic Energy" min="200" max=2000 value="500"/>
+    <label for="position-input">Position (-250 pm - 250 pm)</label>
+    <input type="number" id="position-input" name="Position" min="-250" max="250" value="-250"/>
+    <script src="./main.js" type="text/javascript"></script>
+</body>
+
+</html>

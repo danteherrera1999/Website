@@ -24,13 +24,20 @@
             </ul>
         </nav>
         <main>
-            <ul id="projects-bar">
-                <li class="project-icon" id="rocket-icon" ><a href="./rocket.html"><img src="./assets/rocket-icon.png"></a></li>
-                <li class="project-icon" id="thermo-icon" style="border-color: rgb(109, 25, 112);" ><a href="#top"><img src="./assets/thermo-icon.png"></a></li>
-                <li class="project-icon" id="gimbal-icon" ><a href="./gimbal.html"><img src="./assets/gimbal-icon.png"></a></li>
-                <li class="project-icon" id="MOC-icon" ><a href="./MOC.html"><img src="./assets/MOC-icon.png"></a></li>
-                <li class="project-icon" id="WM-icon" ><a href="./../word_match/word_match.html"><img src="./assets/WM-icon.png"></a></li>
+            <ul id="project-categories-ribbon">
+                <li class="project-category"  id="quantum-mechanics-button"><button value="quantum-mechanics">Quantum Mechanics</button></li>
+                <li class="project-category"  id="rocketry-button"><button value="rocketry">Rocketry</button></li>
+                <li class="project-category"  id="misc-button"><button value="misc">Misc</button></li>
             </ul>
+            <ul id="projects-bar">
+                <li class="project-icon quantum-mechanics hidden" id="TDSE-icon"><a href="./TDSE.html"><img src="./assets/TDSE-icon.png"></a></li>
+                <li class="project-icon rocketry hidden" id="rocket-icon" ><a href="./rocket.html"><img src="./assets/rocket-icon.png"></a></li>
+                <li class="project-icon rocketry hidden selected-project" id="thermo-icon" ><a href="#top"><img src="./assets/thermo-icon.png"></a></li>
+                <li class="project-icon rocketry hidden" id="gimbal-icon" ><a href="./gimbal.html"><img src="./assets/gimbal-icon.png"></a></li>
+                <li class="project-icon rocketry hidden" id="MOC-icon" ><a href="./MOC.html"><img src="./assets/MOC-icon.png"></a></li>
+                <li class="project-icon misc hidden" id="WM-icon" ><a href="./../word_match/word_match.html"><img src="./assets/WM-icon.png"></a></li>
+            </ul>
+            <script src='projects.js'></script>
             <div id="project-flex">
                 <div id="project-info">
                     <h2>Fanno Flow Solver</h2>

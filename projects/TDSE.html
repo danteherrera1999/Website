@@ -2,11 +2,13 @@
 <html>
     <head>
         <link href="projects.css" rel="stylesheet">
-        <script src='https://cdn.plot.ly/plotly-2.18.0.min.js'></script>
+        <link href="TDSE.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js" integrity="sha512-V0j9LhrK9IMNdFYZqh+IqU4cjo7wdxyHNyH+L0td4HryBuZ7Oq6QxP2/CWr6TituX31+gv5PnolvERuTbz8UNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100&display=swap" rel="stylesheet">
-        <title>Dante | Rocket</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.4.1/math.min.js"></script>
+        <title>Dante | TDSE</title>
     </head>
     <body>
         <nav>
@@ -30,15 +32,21 @@
                 <li class="project-category"  id="misc-button"><button value="misc">Misc</button></li>
             </ul>
             <ul id="projects-bar">
-                <li class="project-icon quantum-mechanics hidden" id="TDSE-icon"><a href="./TDSE.html"><img src="./assets/TDSE-icon.png"></a></li>
-                <li class="project-icon rocketry hidden selected-project" id="rocket-icon"><a href="#top"><img src="./assets/rocket-icon.png"></a></li>
+                <li class="project-icon quantum-mechanics hidden selected-project" id="TDSE-icon"><a href="#top"><img src="./assets/TDSE-icon.png"></a></li>
+                <li class="project-icon rocketry hidden" id="rocket-icon" ><a href="./rocket.html"><img src="./assets/rocket-icon.png"></a></li>
                 <li class="project-icon rocketry hidden" id="thermo-icon" ><a href="./thermo.html"><img src="./assets/thermo-icon.png"></a></li>
                 <li class="project-icon rocketry hidden" id="gimbal-icon" ><a href="./gimbal.html"><img src="./assets/gimbal-icon.png"></a></li>
                 <li class="project-icon rocketry hidden" id="MOC-icon" ><a href="./MOC.html"><img src="./assets/MOC-icon.png"></a></li>
                 <li class="project-icon misc hidden" id="WM-icon" ><a href="./../word_match/word_match.html"><img src="./assets/WM-icon.png"></a></li>
             </ul>
             <script src='projects.js'></script>
-            <div id="project-flex">
+            <div id="project-flex" class='vertical-project'>
+                <div id="TDSE-app-container">
+                    <div id="graph"></div>
+                    <button id="simulate-button">Simulate</button>
+                    <div id="TDSE-controls"></div>
+                    <script src="./TDSE.js" type="text/javascript"></script>
+                </div>
                 <div id="project-info">
                     <h2>Hybrid Rocket Engine</h2>
                     <p>
@@ -48,12 +56,6 @@
                         into digital signals which were transmitted over serial to a laptop running a python code for live continuous data collection. This engine also helped me
                         characterize the hybrid engine combustion mechanism which I studied in depth as an undergraduate researcher. A presentation of my work received first place for the undergraduate engineering poster section at Texas A&M's Student Research Week competition .
                     </p>
-                </div>
-                <div id="project-media">
-                    <video muted autoplay controls loop>
-                        <source src="./assets/gremlin.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
                 </div>
             </div>
         </main>

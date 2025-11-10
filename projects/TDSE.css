@@ -1,0 +1,21 @@
+#TDSE-app-container{
+    width:100%;
+}
+#graph{
+    width: 80%;
+    margin: 0 auto;
+}
+.control-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.control-container p{
+    color:white;
+}
+.control-container input{
+    width: 60%;
+}
