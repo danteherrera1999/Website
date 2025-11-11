@@ -107,6 +107,7 @@ main{
 }
 .project-category button:hover{
     background-color: #6d6d6d;
+    cursor: pointer;
 }
 
 .selected-project{
