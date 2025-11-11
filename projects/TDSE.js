@@ -7,7 +7,7 @@ const hbar = 1.054571817E-34
 const m = 9.1093837E-31
 let T = 500 // Kinetic Energy in eV
 const W = 1e-9
-
+let omega = 50e15
 
 // Simulation Params
 const N = 1000
@@ -15,19 +15,20 @@ const dx = W / N
 const dt = 1e-19
 const x = math.range(0, N).map((x) => x * dx - W / 2)
 
-
-
 // Potential
-V_step = (x) => math.abs(x) < (10e-12) ? 500 * 1.6022e-19 : 0 // Step Potential
+const V_step = (x) => math.abs(x) < (10e-12) ? 500 * 1.6022e-19 : 0 // Step Potential
+const V_qho = (x) => .5 * m * omega ** 2 * x ** 2 // Quantum Harmonic Oscillator
+const V_isw = (x) => math.abs(x) < (125e-12) ? -1 : 0 // Infinite Square Well
+let V_current = V_step;
 let Vs = x.map((x) => V_step(x));
 
 // Wave Packet
 const psi2 = (psi) => math.re(math.dotMultiply(math.conj(psi), psi)).toArray()
-const normalize = (psi) => math.divide(psi, math.sqrt(math.multiply(dx,math.sum(psi2(psi)))));
+const normalize = (psi) => math.divide(psi, math.sqrt(math.multiply(dx, math.sum(psi2(psi)))));
 let sigma = 0.05 * W // Spread Term (StD)
 let x0 = -W / 4// Center Term
 const Psi_WP = (x) => math.multiply(math.exp((x - x0) ** 2 / (-2 * sigma ** 2)), math.exp(math.complex(0, math.sqrt(2 * m * T * 1.6022e-19) / hbar * x)));
-const psi_0 = normalize(x.map((x) => Psi_WP(x,500)))
+const psi_0 = normalize(x.map((x) => Psi_WP(x, 500)))
 let psi = psi_0.clone()
 
 // Build Crank-Nicolson Arrays
@@ -40,12 +41,12 @@ let b = Vs.map((Vi) => math.add(1, math.multiply(beta, 2 * t_0 + Vi))) // A diag
 let c = math.zeros(N - 1) // A superdiagonal
 c.set([0], math.divide(a, b.get([0])))
 c.set([0], math.divide(a, b.get([0])))
-  for (let i = 1; i < N - 1; i++) {
-    const w = math.subtract(b.get([i]), math.multiply(a, c.get([i - 1])))
-    c.set([i], math.divide(a, w))
-  }
-  
-  
+for (let i = 1; i < N - 1; i++) {
+  const w = math.subtract(b.get([i]), math.multiply(a, c.get([i - 1])))
+  c.set([i], math.divide(a, w))
+}
+
+
 
 
 function mult_B(psi) { // Apply B matrix to psi (exploits tridiagonality to avoid expensive matmul operation)
@@ -54,7 +55,7 @@ function mult_B(psi) { // Apply B matrix to psi (exploits tridiagonality to avoi
   for (let i = 1; i < N - 1; i++) {
     psi_new.set([i], math.add(math.multiply(alpha, psi.get([i - 1])), math.multiply(B.get([i]), psi.get([i])), math.multiply(alpha, psi.get([i + 1]))))
   }
-  psi_new.set([0], math.add(math.multiply(B.get([N - 1]), psi.get([N - 1])), math.multiply(alpha, psi.get([N - 2]))))
+  psi_new.set([N-1], math.add(math.multiply(B.get([N - 1]), psi.get([N - 1])), math.multiply(alpha, psi.get([N - 2]))))
   return psi_new
 }
 
@@ -92,8 +93,8 @@ Plotly.newPlot('graph', [{
 function set_sim_params(PSI_0, V) {
   Vs = x.map((x) => V(x));
   const psi_0 = x.map((x) => PSI_0(x));
-  psi_0.set([0],0);
-  psi_0.set([N-1],0);
+  psi_0.set([0], 0);
+  psi_0.set([N - 1], 0);
   psi = normalize(psi_0)
   B = Vs.map((Vi) => math.subtract(1, math.multiply(beta, 2 * t_0 + Vi))) // B diagonal
   a = math.multiply(-1, alpha) // A subdiagonal
@@ -118,20 +119,23 @@ function set_sim_params(PSI_0, V) {
 
 }
 
-function update_param(name,value){
-  switch (name){
+function update_param(name, value) {
+  switch (name) {
     case 'Kinetic Energy':
-      T=value;
+      T = value;
       break;
     case 'Starting Position':
-      x0=value;
+      x0 = value;
+      break;
+    case 'Angular Frequency':
+      omega = value;
       break;
   }
 }
 
 
-class TDSE_control{
-  constructor(data){
+class TDSE_control {
+  constructor(data) {
     this.name = data.name;
     this.potential = data.potential;
     this.min = data.min;
@@ -144,25 +148,41 @@ class TDSE_control{
     this.label = document.createElement('p');
     this.label.innerHTML = `${this.name} (${this.min} - ${this.max} ${this.unit})`;
     this.slider = document.createElement('input')
-    this.slider.type='range'
-    this.slider.max = this.max
-    this.slider.min = this.min
+    this.slider.type = 'range';
+    this.slider.max = this.max;
+    this.slider.min = this.min;
+    this.slider.value = data.init;
     this.element.appendChild(this.label);
     this.element.appendChild(this.slider);
     tdseControlsContainer.appendChild(this.element);
-    this.slider.addEventListener('change',()=>{this.handleChange()})
+    this.slider.addEventListener('change', () => { this.handleChange() })
   }
-  handleChange(){
-    update_param(this.name,this.slider.value * this.scale);
-    set_sim_params(Psi_WP,V_step)
+  handleChange() {
+    update_param(this.name, this.slider.value * this.scale);
+    set_sim_params(Psi_WP, V_current);
   }
 }
 
-
+function handlePotentialChange(e) {
+  if (e.target.type == 'submit') {
+    switch (e.target.value) {
+      case 'fb':
+        V_current = V_step;
+        break;
+      case 'qho':
+        V_current = V_qho;
+        break;
+      case 'isw':
+        V_current = V_isw;
+        break;
+    }
+    set_sim_params(Psi_WP, V_current);
+  }
+}
 function update() {
   psi_new = Thomas_algorithm(mult_B(psi));
-  psi_new.set([0],0);
-  psi_new.set([N-1],0);
+  psi_new.set([0], 0);
+  psi_new.set([N - 1], 0);
   psi = normalize(psi_new);
   Plotly.animate('graph', {
     data: [{ x: x.toArray(), y: psi2(psi) }, trace_V]
@@ -179,32 +199,39 @@ function update() {
 }
 
 
-k = math.sqrt(2 * m * T * 1.6022e-19) / hbar
 
+document.getElementById('potential-ribbon').addEventListener('click', handlePotentialChange);
 
-const controls=[
-  {name:'Kinetic Energy',
-    potential: null,
-    min: 200,
+const controls = [
+  {
+    name: 'Kinetic Energy',
+    min: 0,
     max: 2000,
-    scale:1,
-    unit:'eV',
+    init:500,
+    scale: 1,
+    unit: 'eV',
 
-},  {name:'Starting Position',
-    potential: null,
+  }, {
+    name: 'Starting Position',
     min: -250,
     max: 250,
-    scale:1e-12,
-    unit:'pm',
+    init:-250,
+    scale: 1e-12,
+    unit: 'pm',
+  },{
+    name: 'Angular Frequency',
+    min: 0,
+    max: 100,
+    init:25,
+    scale: 1e15,
+    unit: '1e15 rad/sec',
+  }
+]
 
-}]
-
-const checkT = (T) => T<200? 200: (T>2000? 2000: T) 
-const checkX = (X) => X<-250? -250e-12: (X>250? 250e-12: X*1e-12) 
-set_sim_params(Psi_WP, V_step)
+set_sim_params(Psi_WP, V_current)
 requestAnimationFrame(update)
 
 
-const tdseControls = controls.map((control_data)=>new TDSE_control(control_data))
+const tdseControls = controls.map((control_data) => new TDSE_control(control_data))
 
-simulateButton = document.getElementById('simulate-button');
+simulateButton = document.getElementById('simulate-button').addEventListener('click',()=>{set_sim_params(Psi_WP,V_current)});
