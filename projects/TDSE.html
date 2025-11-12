@@ -54,8 +54,10 @@
                     <script src="./TDSE.js" type="text/javascript"></script>
                 </div>
                 <div id="project-info">
-                    <h2>Time-Dependent Schrödinger Equation</h2>
+                    <h2>Time-Dependent Schrödinger Equation Solver</h2>
                     <p>
+                        This is a Crank-Nicolson based 1D time-dependent Schrödinger equation solver. The code uses an averaged forward and central differences discretization scheme for the first time derivative and second space derivative respectively. This converts the PDE into a system of linear equations that can be represented with tridiagonal matrices. The big advantage of this method is that it is not only unconditionally stable, but the tridiagonal nature of the matrices reduces expensive matrix multiplication steps to calculations along only a few arrays. This is done via the Thomas Method in which a forward pass converts the LHS matrix to an upper diagonal matrix, and then a backwards pass solves for each element of the new (t+dt) wavefunction. The heart of the solver has 2 inputs, the first is an anonymous function representing the initial wavefunction, and the second is another anonymous function representing the potential. From these inputs, the entire evolution of the wavefunction in time and space is calculated. All of the code is written in JavaScript and can be found 
+                    <a target="_blank" href="https://github.com/danteherrera1999/Website/blob/main/projects/TDSE.js">here</a>.
                     </p>
                 </div>
             </div>

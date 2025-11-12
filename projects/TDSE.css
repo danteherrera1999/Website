@@ -20,8 +20,9 @@
     justify-content: center;
 }
 #project-info{
-    width: 100%;
-    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
 }
 #potential-ribbon button{
     background-color: transparent;
@@ -47,6 +48,9 @@
 .control-container input:hover{
     cursor: pointer;
 }
+input[type="range"]{
+    accent-color: white;
+}
 #simulate-button{
     left:15%;
     color:white;
@@ -58,4 +62,11 @@
 }
 #simulate-button:hover{
     background-color: rgb(109, 109, 109);
+}
+.hidden{
+    display: none;
+}
+a{
+    display: inline-block;
+    color: white;
 }

@@ -7,7 +7,8 @@ const hbar = 1.054571817E-34
 const m = 9.1093837E-31
 let T = 500 // Kinetic Energy in eV
 const W = 1e-9
-let omega = 50e15
+let omega = 50e15 // Angular Frequency of QHO potential
+let w = 20e-12 // Finite Barrier Potential Width
 
 // Simulation Params
 const N = 1000
@@ -16,11 +17,11 @@ const dt = 1e-19
 const x = math.range(0, N).map((x) => x * dx - W / 2)
 
 // Potential
-const V_step = (x) => math.abs(x) < (10e-12) ? 500 * 1.6022e-19 : 0 // Step Potential
+const V_fb = (x) => math.abs(x) < w/2 ? 500 * 1.6022e-19 : 0 // Step Potential
 const V_qho = (x) => .5 * m * omega ** 2 * x ** 2 // Quantum Harmonic Oscillator
-const V_isw = (x) => math.abs(x) < (125e-12) ? -1 : 0 // Infinite Square Well
-let V_current = V_step;
-let Vs = x.map((x) => V_step(x));
+const V_isw = (x) => math.abs(x) < (200e-12) ? 0 : 1 // Infinite Square Well
+let V_current = V_fb;
+let Vs = x.map((x) => V_fb(x));
 
 // Wave Packet
 const psi2 = (psi) => math.re(math.dotMultiply(math.conj(psi), psi)).toArray()
@@ -78,16 +79,39 @@ function Thomas_algorithm(d) { // Modified Thomas algorithm (Decompose to upper 
   return psi_new
 }
 
+
 // Plotting
+let layout = {
+  paper_bgcolor: 'rgba(0,0,0,0)',
+  plot_bgcolor: 'rgba(0,0,0,0)',
+  font: { color: 'white' },
+  xaxis: {
+    gridcolor: 'rgba(0,0,0,0)',
+    zerolinecolor: 'rgba(255,255,255,0.3)',
+    linecolor: 'rgba(0,0,0,0)',
+    tickcolor: 'rgba(255,255,255,0.7)',
+    range:[-W / 2, W / 2],
+  },
+  yaxis: {
+    gridcolor: 'rgba(0,0,0,0)',
+    zerolinecolor: 'rgba(255,255,255,0.3)',
+    linecolor: 'rgba(0,0,0,0)',
+    tickcolor: 'rgba(0,0,0,0)',
+    range:[0, 1],
+    color:'rgba(0,0,0,0)',
+  }
+};
 Plotly.newPlot('graph', [{
-  x: [],
-  y: [],
-  name: 'Psi^2'
+  x: [0],
+  y: [0],
+  name: 'Ψ²',
+  line:{color:'white'}
 }, {
-  x: [],
-  y: [],
-  name: 'Potential'
-}])
+  x: [0],
+  y: [0],
+  name: 'Potential',
+  line:{color:'rgba(158, 29, 163, .9)'}
+}],layout)
 
 
 function set_sim_params(PSI_0, V) {
@@ -111,8 +135,8 @@ function set_sim_params(PSI_0, V) {
     x: x.toArray(),
     y: math.multiply(1.5, Vs, 1 / Math.max(...Vs.toArray().flat(Infinity).map(Number)), math.max(psi2(psi))).toArray()
   };
-
-  Plotly.relayout('graph', { xaxis: { range: [-W / 2, W / 2] }, yaxis: { range: [0, 2 * math.max(psi2(psi))] } })
+  layout.yaxis.range=[0, 2 * math.max(psi2(psi))];
+  Plotly.relayout('graph', layout)
 
 
   // Reset All Params
@@ -130,10 +154,21 @@ function update_param(name, value) {
     case 'Angular Frequency':
       omega = value;
       break;
+    case 'Wave Packet σ':
+      sigma = value;
+      break;
+    case 'Barrier Width':
+      w = value;
+      break;
   }
 }
 
-
+const set_param = (param,value)=>{tdseControls.forEach((tdseControl)=>{if (tdseControl.name==param){tdseControl.set_value(value)}})}
+const set_all_params = (params) =>{
+  Object.entries(params).forEach((param)=>{
+    set_param(param[0],param[1])
+  })
+}
 class TDSE_control {
   constructor(data) {
     this.name = data.name;
@@ -157,6 +192,10 @@ class TDSE_control {
     tdseControlsContainer.appendChild(this.element);
     this.slider.addEventListener('change', () => { this.handleChange() })
   }
+  set_value(new_value){
+    this.slider.value=new_value;
+    this.handleChange();
+  }
   handleChange() {
     update_param(this.name, this.slider.value * this.scale);
     set_sim_params(Psi_WP, V_current);
@@ -167,16 +206,27 @@ function handlePotentialChange(e) {
   if (e.target.type == 'submit') {
     switch (e.target.value) {
       case 'fb':
-        V_current = V_step;
+        V_current = V_fb;
+        set_all_params({'Starting Position':-250,'Kinetic Energy':500})
         break;
       case 'qho':
         V_current = V_qho;
+        set_all_params({'Starting Position':-250,'Kinetic Energy':500})
         break;
       case 'isw':
         V_current = V_isw;
+        set_all_params({'Starting Position':0,'Kinetic Energy':0})
         break;
     }
     set_sim_params(Psi_WP, V_current);
+    tdseControls.forEach((tdseControl)=>{
+      if ([V_current,null].includes(tdseControl.potential)){
+        tdseControl.element.classList.remove('hidden')
+      }
+      else{
+        tdseControl.element.classList.add('hidden')
+      }
+    })
   }
 }
 function update() {
@@ -200,11 +250,12 @@ function update() {
 
 
 
-document.getElementById('potential-ribbon').addEventListener('click', handlePotentialChange);
-
+const potentialRibbon = document.getElementById('potential-ribbon')
+potentialRibbon.addEventListener('click', handlePotentialChange);
 const controls = [
   {
     name: 'Kinetic Energy',
+    potential:null,
     min: 0,
     max: 2000,
     init:500,
@@ -213,25 +264,47 @@ const controls = [
 
   }, {
     name: 'Starting Position',
+    potential:null,
     min: -250,
     max: 250,
     init:-250,
     scale: 1e-12,
     unit: 'pm',
   },{
+    name: 'Wave Packet σ',
+    potential:null,
+    min: 10,
+    max: 100,
+    init:50,
+    scale: 1e-12,
+    unit: 'pm',
+  },{
     name: 'Angular Frequency',
+    potential: V_qho,
     min: 0,
     max: 100,
     init:25,
     scale: 1e15,
     unit: '1e15 rad/sec',
+  },{
+    name: 'Barrier Width',
+    potential: V_fb,
+    min: 10,
+    max: 50,
+    init:25,
+    scale: 1e-12,
+    unit: 'pm',
   }
+
 ]
 
 set_sim_params(Psi_WP, V_current)
+
 requestAnimationFrame(update)
 
 
 const tdseControls = controls.map((control_data) => new TDSE_control(control_data))
 
 simulateButton = document.getElementById('simulate-button').addEventListener('click',()=>{set_sim_params(Psi_WP,V_current)});
+potentialRibbon.children[0].click()
+window.addEventListener('resize',()=>{Plotly.Plots.resize('graph')})

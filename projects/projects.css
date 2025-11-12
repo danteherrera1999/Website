@@ -132,7 +132,7 @@ main{
     object-fit: contain;
 }
 .project-icon:hover{
-    border-color: rgb(109, 25, 112);
+    border-color: rgba(158, 29, 163, 1);
 }
 .project-icon img{
     width: 100%;
