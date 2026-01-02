@@ -74,7 +74,6 @@ class PostBox{
         this.generateTimeline();
         this.activePosts = this.posts;
         this.updateActivePosts();
-        
     }
     generateTimeline(){
         this.posts.forEach((post)=>{

@@ -39,12 +39,11 @@ async function init_page() {
     // Get post ID from URL Params
     const urlParams = new URLSearchParams(window.location.search);
     const pid = urlParams.get('pid');
-    
+
     // Load Post Data
     const allPostData = await get_all_posts();
-    Object.entries(allPostData).forEach((postData)=>{allPostData[postData[0]].post_id=postData[0]})
-    console.log(allPostData);
-    let allPostsDataList = Object.entries(allPostData).map((postData) =>postData[1]);
+    Object.entries(allPostData).forEach((postData) => { allPostData[postData[0]].post_id = postData[0] })
+    let allPostsDataList = Object.entries(allPostData).map((postData) => postData[1]);
 
     // Sort by timestamp
     allPostsDataList.sort((a, b) => {
@@ -52,15 +51,18 @@ async function init_page() {
     })
 
     const postData = allPostData[pid];
-    
+    const orderedPids = allPostsDataList.map((postData)=>postData.post_id)
+    const nPost = orderedPids.indexOf(String(pid));
+
     // Fill post data
     let title = document.getElementById('post-title');
     title.innerHTML = postData.title;
     let date = document.getElementById('post-date');
     date.innerHTML = this.date = new Date(`${postData.date}T${postData.time}`).toLocaleString();
-    // generate tag elements:
+
+    // Generate tag elements:
     let tagBox = document.getElementById('tag-box');
-    postData.tags.forEach((tag)=>{
+    postData.tags.forEach((tag) => {
         let newTag = document.createElement('p');
         newTag.classList.add('tag');
         newTag.innerHTML = tag;
@@ -68,6 +70,13 @@ async function init_page() {
     })
     let text = document.getElementById('post-text');
     text.innerHTML = postData.text;
+
+    // Set up footer buttons
+    document.getElementById('prev-button-text').innerHTML = nPost==0? "Blog Home" : "Previous Post";
+    document.getElementById('prev-button').href = nPost==0? "./blog_main.html" :`./post_main.html?pid=${orderedPids[nPost-1]}`;
+    document.getElementById('next-button-text').innerHTML = (nPost==orderedPids.length-1)? "Blog Home" : "Next Post";
+    document.getElementById('next-button').href = (nPost==orderedPids.length-1)? "./blog_main.html" :`./post_main.html?pid=${orderedPids[nPost+1]}`;
+
 }
 
 init_page()
