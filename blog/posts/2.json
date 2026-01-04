@@ -14,7 +14,7 @@
         },
         {
             "type": "image",
-            "src": "./posts/assets/moon_image_01_04_2026.jpg",
+            "src": "moon_image_01_04_2026.jpg",
             "alt": "Cell phone image of the moon taken through the lens of a telescope",
             "caption": "Phone image of the moon th rough my celestron",
             "float": "right",
