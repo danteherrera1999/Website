@@ -3,5 +3,36 @@
     "date": "2026-MM-DD",
     "time": "HH:MM",
     "tags": [],
-    "text": ""
-}
+    "content": [
+        {
+            "type": "video",
+            "src": "test_video.mp4",
+            "caption": "Demo clip",
+            "float": "right",
+            "width": "min(400px, 100%)"
+        },
+        {
+            "type": "p",
+            "text": ""},
+        {
+            "type": "p",
+            "text": ""},
+        {
+            "type": "image",
+            "src": "test_image.jpg",
+            "alt": "Test image alternative text",
+            "caption": "Test Image Caption",
+            "float": "right",
+            "width": "320px"
+        },
+        {
+            "type": "p",
+            "text": ""},
+        {
+            "type": "audio",
+            "src": "test_audio.m4a",
+            "caption": "Test Audio Caption",
+            "float": "left",
+            "width": "360px"
+        }
+    ]}
