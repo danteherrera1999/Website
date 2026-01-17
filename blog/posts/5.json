@@ -1,0 +1,32 @@
+{
+    "title": "My New v4 Motorcycle",
+    "date": "2026-01-09",
+    "time": "20:24",
+    "tags": ["Motorcycles","V65 Sabre"],
+    "content": [
+        {
+            "type": "image",
+            "src": "V65_Side_View.jpg",
+            "alt": "Side view of my new 1984 V65 Sabre",
+            "caption": "Side view of my new 1984 V65 Sabre",
+            "float": "right",
+            "width": "320px"
+        },
+        {
+            "type": "p",
+            "text": "I really had no plan on buying a new motorcycle this soon. I already have a 2025 Triumph Scrambler 400x and a 2013 KTM 350 EXC-F. Now I admit, I've been wanting something with a bit more get up for a minute now, but I had my eyes set on the Thruxton R as it captures the classic cafe racer style I love and also has great power and handling. That being said, I also wanted my first performance bike to be something that I could really make my own with styling, but I didn't really feel comfortable modding and messing with a $12-20k bike. \n\nThere is an empty car lot in Los Alamos where people park cars they are trying to sell. The other day as I was driving past it I saw a quirky and retro looking bike parked there. I assumed it was an old cruiser that would be neat to own but not really fill any niches my current bikes couldn't. I went to the lot at lunch with a collegue as he is also considering getting a motorcycle and we both wanted to check it out. That's when I got to see the bike and read the specs. The 1984 V65 Sabre VF1100S: 1100 cc v4 making over 120 hp, a top speed over 150mph, 0-60 in a hair over 3 seconds. This was NOT a cruiser, its a monster, and a stylistically beautiful one at that. The owner got it in an estate sale, rebuilt the carb, and replaced all the fluids. After the test drive I had seen enough. I picked this beast up for $3000 and I can't wait to start ripping it."
+        },
+        {
+            "type": "image",
+            "src": "V65_Front_View.jpg",
+            "alt": "Front view of my new 1984 V65 Sabre",
+            "caption": "Front view of my new 1984 V65 Sabre",
+            "float": "left",
+            "width": "320px"
+        },
+        {
+            "type": "p",
+            "text": "I definitely want to modify the exterior. I've seen a few cafe racer conversions of this bike but I think I want to go a different direction. I absolutely love the retro styling and I want to accentuate that while adding a touch of cyberpunk to it. First I'm going to move the twin horns and replace them with twin ring headlights. I also want to add lighting to the trim and wheels. It seems to be quite difficult to add lighting to a bike without it looking tacky, so I'm still thinking about how I want to accomplish that. One option is this electroluminescent paint I found called \"Lumilor\", but it is extremely expensive and complicated to apply. While I would consider getting the work done at a shop, the only color that really seems to work for Lumilor is their blue color, they have other options but they all seem to be really dim. I'm not entirely sure what color I wan't right now but I'm leaning more towards orange or purple, neither of which have good lumilor products. Ultimately, this is just the beginning. I have big plans for this thing and I can't wait to get to work."
+        }
+    ]
+}
