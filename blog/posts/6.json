@@ -12,11 +12,12 @@
             "alt": "Plane Over Chicago",
             "caption": "Plane Over Chicago",
             "float": "right",
-            "width": "500px"
+            "width": "700px"
         },
         {
             "type": "p",
             "text": "Today I flew from ABQ to Raleigh, NC for work. I'm here to take a 3 day training course on strain gauges. They are essentially tiny films of metal that you adhere to a surface to monitor strain. When a material deforms, the strain gauge deforms with it which causes a change in resistance of the metal film. By measuring this resistance, you can calculate how much a material has deformed. There are many more uses of strain gauges since the deformation of a material can be used to measure many things. For example: a pressure transducer can use a strain gauge on a membrane to measure the pressure of a system and an RTD (resistance temperature detector) can measure the strain due to thermal expansion and thus: the temperature. I've used strain gauges in the past and I use RTDs all the time so I am pretty familiar with the electronics and DAQ side of them, but this training focuses on the physical application of the gauges which I have very limited experience in, so that should be insightful. \n\n Classes for my last semester at ASU also began today. I am taking the capstone course for biophysics: \"From Molecules to Cells\" which focuses mainly on the mathematics of biological function from molecular to cellular scales. The second class I'm taking was one that I picked to fill a \"Science in Society\" elective slot: Forensic Anthropology. I've never taken a class like this but it seems like it will be fun. It mostly will focus on identifying skeletal remains, both the individual who the remains belonged to and the circumstances surrounding their death. These are the last 2 classes I need to complete my B.S. in biophysics."
         }
     ]
+
 }
