@@ -2,7 +2,10 @@
     "title": "A Bike of Many Leaks",
     "date": "2026-01-19",
     "time": "18:05",
-    "tags": ["V65 Sabre","Motorcycles"],
+    "tags": [
+        "V65 Sabre",
+        "Motorcycles"
+    ],
     "content": [
         {
             "type": "image",
@@ -14,7 +17,8 @@
         },
         {
             "type": "p",
-            "text": "Now that I'm back in New Mexico I got a chance to take a closer look at the Sabre. Oh boy are there a lot of things to fix. First, I noticed a leak where the fuel line connects to the back of the fuel tank. This leak must have been there for quite some time as a pool of fuel has started to eat away at the paint. Furthermore, there's a film of fuel over just about everything behind that fuel connections. This makes me a bit skeptical about some of the previous owner's claims. He said he ran through the whole bike, rebuilt the carb, changed all the fluids, and installed a new battery. When I took the seat off, this fuel issue was the very first thing I saw, fuel everywhere and an obvious pooling behind the tank, so how did he miss that if I went through the whole bike?"},
+            "text": "Now that I'm back in New Mexico I got a chance to take a closer look at the Sabre. Oh boy are there a lot of things to fix. First, I noticed a leak where the fuel line connects to the back of the fuel tank. This leak must have been there for quite some time as a pool of fuel has started to eat away at the paint. Furthermore, there's a film of fuel over just about everything behind that fuel connections. This makes me a bit skeptical about some of the previous owner's claims. He said he ran through the whole bike, rebuilt the carb, changed all the fluids, and installed a new battery. When I took the seat off, this fuel issue was the very first thing I saw, fuel everywhere and an obvious pooling behind the tank, so how did he miss that if I went through the whole bike?"
+        },
         {
             "type": "image",
             "src": "V65_coolant_leak.jpg",
@@ -25,7 +29,8 @@
         },
         {
             "type": "p",
-            "text": "On top of that, I noticed what I believe to be a coolant puddle under the radiator and a very obvious pooling of coolant under one of the coolant lines. To be fair, the bike is over 40 years old so it probably needs just about every rubber hose and gasket in it replaced. It looks like it will be a minute before I get this thing back on the road."},
+            "text": "On top of that, I noticed what I believe to be a coolant puddle under the radiator and a very obvious pooling of coolant under one of the coolant lines. To be fair, the bike is over 40 years old so it probably needs just about every rubber hose and gasket in it replaced. It looks like it will be a minute before I get this thing back on the road."
+        },
         {
             "type": "image",
             "src": "V65_fork_leak.jpg",
@@ -36,6 +41,7 @@
         },
         {
             "type": "p",
-            "text": "While replacing all the hoses is going to be tedious and time consuming, there might be larger issues yet. I noticed on the right side of the front rim there was some residue building up. It's likely the front right fork seal that is starting to give out. I do not have the tools to repair fork seals right now so that will probably be a rather costly fix at the mechanics shop. This bike is old, I expected some problems. Part of why I got this bike was to get some more experience working on bikes, so all things considered, it's not too bad. From the little seat time I've had the engine seems rock solid which is just about all you could ask from a 40 year old muscle bike. Hopefully I can knock these things out and get it back on the road where it belongs."}
-
-    ]}
+            "text": "While replacing all the hoses is going to be tedious and time consuming, there might be larger issues yet. I noticed on the right side of the front rim there was some residue building up. It's likely the front right fork seal that is starting to give out. I do not have the tools to repair fork seals right now so that will probably be a rather costly fix at the mechanics shop. This bike is old, I expected some problems. Part of why I got this bike was to get some more experience working on bikes, so all things considered, it's not too bad. From the little seat time I've had the engine seems rock solid which is just about all you could ask from a 40 year old muscle bike. Hopefully I can knock these things out and get it back on the road where it belongs."
+        }
+    ]
+}
