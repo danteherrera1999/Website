@@ -13,7 +13,7 @@
             "alt": "Leak at Fuel Tank Connector",
             "caption": "Leak at Fuel Tank Connector",
             "float": "right",
-            "width": "600px"
+            "width": "800px"
         },
         {
             "type": "p",
@@ -25,7 +25,7 @@
             "alt": "Pool of Coolant Under Right Side Coolant Hose",
             "caption": "Pool of Coolant Under Right Side Coolant Hose",
             "float": "left",
-            "width": "500px"
+            "width": "800px"
         },
         {
             "type": "p",
@@ -46,3 +46,4 @@
     ]
 
 }
+
