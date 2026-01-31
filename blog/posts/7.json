@@ -1,0 +1,31 @@
+{
+    "title": "Back in New Mexico",
+    "date": "2026-01-16",
+    "time": "21:15",
+    "tags": ["Work","Travel","STEM","Linear Algebra"],
+    "content": [
+        {
+            "type": "image",
+            "src": "strain_assembly.jpg",
+            "alt": "Dual Strain Gauge Assembly Adhered to a Metal Beam",
+            "caption": "Dual Strain Gauge Assembly Adhered to a Metal Beam",
+            "float": "right",
+            "width": "600px"
+        },
+        {
+            "type": "p",
+            "text": "I got back to NM today. I Learned quite a bit about strain gauges at my training. I knew most of the theory of operation from my time working with them in the past, but I had limited experience in actually applying them. Applying the gauges also gave me a lot of hands on insight into which factors I should be considering when I select a strain gauge for my application. While I consider myself pretty decent with a soldering iron, these solders were quite small. Couple that with the fact that the strain gauges were very delicate and you end up with a challenging installation process. Luckily, all my gauges turned out alright and passed testing."},
+        {
+            "type": "image",
+            "src": "strain_cert.jpg",
+            "alt": "My Certificate of Completion From the Strain Gauge Course",
+            "caption": "My Certificate of Completion From the Strain Gauge Course",
+            "float": "left",
+            "width": "500px"
+        },
+        {
+            "type":"p",
+            "text":"Raleigh was quaint. Perhaps not the kind of place I see myself living, but I see the appeal. The area clearly had a lot of history. The buildings were old, but for some reason I didn't get the sort of charm that I would expect from that architecture, instead there was a sort of eerie emptyness to it. Many of the old buildings in downtown were either unoccupied or had some random quirky shop that was operating out of it. I guess its interesting to see how people are repurposing prime real estate without knocking down historic buildings, but it also feels a bit uneasy knowing that generations of people grew up in those homes, and now they are just glorified shop fronts. I think another reason it felt uneasy is that a lot of those buildings were from the times of slavery, perhaps even built by slaves. Many modern cities, and in fact much of the US at large was built on slave labor in some capacity, so perhaps its unfair to single out Raleigh. But there it is not just the trickle down effects, but the literal buildings themselves, you can walk up and touch a building or monument that somebody was forced to build against their will. Pretty town, but the vibe was a bit weird for me is all.\n\n On the plane ride back I finished the 2nd chapter of the Boas math book and read chapters 1 and 2 from \"Linear Algebra Done Right\". Nothing in particular to report, I think the interesting stuff is yet to come. I forced myself to talk to one of my seatmates on the plane. His name was Gabe and he worked in land management for the native american governmental body in some capacity. We talked a bit about ABQ and Los Alamos and some recent political developments. I got the impression that he was a good guy. I'm not particularly excited to go back to work but I am excited to be back in New Mexico which is not a sentence I could hear myself saying 3 years ago, I supposed this place is growing on me after all."
+        }
+
+    ]}
